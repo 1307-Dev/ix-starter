@@ -1,0 +1,20 @@
+.grid-custom {
+  --ag-row-border-style: solid;
+  --ag-row-border-width: 1px;
+}
+
+body.theme-classic-light .grid-custom {
+  --ag-background-color: #ffffff;
+  --ag-header-background-color: #f2f2f2;
+  --ag-row-border-color: rgba(0, 0, 0, 0.1);
+  --ag-border-color: rgba(0, 0, 0, 0.15);
+  --ag-header-column-separator-color: rgba(0, 0, 0, 0.15);
+}
+
+body.theme-classic-dark .grid-custom {
+  --ag-background-color: rgba(255, 255, 255, 0.06);
+  --ag-header-background-color: rgba(255, 255, 255, 0.1);
+  --ag-row-border-color: rgba(255, 255, 255, 0.1);
+  --ag-border-color: rgba(255, 255, 255, 0.15);
+  --ag-header-column-separator-color: rgba(255, 255, 255, 0.15);
+}
