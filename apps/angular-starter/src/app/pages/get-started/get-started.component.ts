@@ -1,0 +1,49 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IxTypography } from '@siemens/ix-angular/standalone';
+
+@Component({
+  selector: 'app-get-started',
+  standalone: true,
+  imports: [IxTypography],
+  template: `
+    <div style="padding: 2rem">
+      <ix-typography format="h1">
+        Get Started with Siemens Industrial Experience
+      </ix-typography>
+      <ix-typography format="body" style="display: block; margin-top: 1rem; margin-bottom: 1.5rem">
+        The starter app includes an application shell and three example pages with commonly used components.
+      </ix-typography>
+
+      <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 0.5rem">
+        <li>
+          <a (click)="navigate('/forms')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+            &gt; Forms
+          </a>
+        </li>
+        <li>
+          <a (click)="navigate('/charts')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+            &gt; Charts
+          </a>
+        </li>
+        <li>
+          <a (click)="navigate('/grids')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+            &gt; Grids
+          </a>
+        </li>
+      </ul>
+
+      <ix-typography format="body" style="display: block">
+        Browse the full component library at
+        <a href="https://ix.siemens.io" target="_blank" rel="noreferrer">ix.siemens.io</a>
+      </ix-typography>
+    </div>
+  `,
+})
+export class GetStartedComponent {
+  constructor(private router: Router) {}
+
+  navigate(path: string) {
+    this.router.navigate([path]);
+  }
+}

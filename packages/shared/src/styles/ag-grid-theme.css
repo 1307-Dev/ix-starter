@@ -1,0 +1,37 @@
+/**
+ * AG Grid theme overrides using Siemens iX CSS variables
+ * Import this in apps that use AG Grid for consistent theming
+ */
+
+.ix-ag-grid {
+  --ag-row-border-style: solid;
+  --ag-row-border-width: 1px;
+}
+
+/* Light theme - using iX CSS variables */
+body.theme-classic-light .ix-ag-grid {
+  --ag-background-color: var(--theme-color-component-1);
+  --ag-header-background-color: var(--theme-color-component-2);
+  --ag-row-border-color: var(--theme-color-soft-bdr);
+  --ag-border-color: var(--theme-color-std-bdr);
+  --ag-header-column-separator-color: var(--theme-color-std-bdr);
+  --ag-odd-row-background-color: var(--theme-color-component-1);
+  --ag-row-hover-color: var(--theme-color-ghost--hover);
+  --ag-selected-row-background-color: var(--theme-color-ghost--selected);
+  --ag-foreground-color: var(--theme-color-std-text);
+  --ag-header-foreground-color: var(--theme-color-std-text);
+}
+
+/* Dark theme - using iX CSS variables */
+body.theme-classic-dark .ix-ag-grid {
+  --ag-background-color: var(--theme-color-component-1);
+  --ag-header-background-color: var(--theme-color-component-2);
+  --ag-row-border-color: var(--theme-color-soft-bdr);
+  --ag-border-color: var(--theme-color-std-bdr);
+  --ag-header-column-separator-color: var(--theme-color-std-bdr);
+  --ag-odd-row-background-color: var(--theme-color-component-1);
+  --ag-row-hover-color: var(--theme-color-ghost--hover);
+  --ag-selected-row-background-color: var(--theme-color-ghost--selected);
+  --ag-foreground-color: var(--theme-color-std-text);
+  --ag-header-foreground-color: var(--theme-color-std-text);
+}
