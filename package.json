@@ -2,6 +2,7 @@
   "name": "ix-mcp-starter",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev:react": "pnpm --filter ix-react-starter dev",
     "dev:angular": "pnpm --filter ix-angular-starter dev",
