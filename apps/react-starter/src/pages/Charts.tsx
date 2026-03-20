@@ -4,14 +4,6 @@ import { useEffect, useRef } from 'react';
 import { IxIcon, IxTypography } from '@siemens/ix-react';
 import { themeSwitcher } from '@siemens/ix';
 import * as echarts from 'echarts/core';
-import { LineChart } from 'echarts/charts';
-import {
-  GridComponent,
-  TooltipComponent,
-  TitleComponent,
-} from 'echarts/components';
-import { CanvasRenderer } from 'echarts/renderers';
-import { registerTheme } from '@siemens/ix-echarts';
 import {
   buildChartOptions,
   URL_ECHARTS,
@@ -23,8 +15,7 @@ import {
   PAGE_PADDING,
 } from '@ix-starter/shared';
 
-echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
-registerTheme(echarts);
+// Note: ECharts components are registered in main.tsx
 
 function Charts() {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -32,6 +23,18 @@ function Charts() {
 
   useEffect(() => {
     if (!chartRef.current) return;
+
+    // Dispose any existing instance first (handles Strict Mode double-invoke)
+    if (instanceRef.current) {
+      instanceRef.current.dispose();
+      instanceRef.current = null;
+    }
+
+    // Also check for orphaned instances on the DOM element
+    const existingInstance = echarts.getInstanceByDom(chartRef.current);
+    if (existingInstance) {
+      existingInstance.dispose();
+    }
 
     const theme = themeSwitcher.getCurrentTheme();
     instanceRef.current = echarts.init(chartRef.current, theme);

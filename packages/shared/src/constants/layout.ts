@@ -7,10 +7,6 @@ export const CHART_MAX_WIDTH = '700px';
 export const CHART_HEIGHT = '400px';
 export const CHART_INIT_DELAY_MS = 100;
 
-// Grid dimensions
-export const GRID_MIN_HEIGHT = '300px';
-export const GRID_MAX_WIDTH = '700px';
-
 // Form dimensions
 export const FORM_MAX_WIDTH = '480px';
 

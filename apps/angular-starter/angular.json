@@ -31,6 +31,7 @@
               "node_modules/@siemens/ix/dist/siemens-ix/theme/classic-light.css",
               "node_modules/ag-grid-community/styles/ag-grid.css",
               "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
+              "node_modules/@ix-starter/shared/src/styles/ag-grid-theme.css",
               "src/styles.css"
             ],
             "scripts": []

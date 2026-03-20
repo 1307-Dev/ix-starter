@@ -15,23 +15,8 @@ import {
   iconTable,
   iconDragAndDrop,
 } from '@siemens/ix-icons/icons';
-import { themeSwitcher } from '@siemens/ix';
-
-const DEFAULT_THEME = 'theme-classic-light';
-
-function initializeTheme(initialTheme = DEFAULT_THEME): () => void {
-  const handleThemeChange = (newTheme: string) => {
-    document.body.classList.remove('theme-classic-light', 'theme-classic-dark');
-    document.body.classList.add(newTheme);
-  };
-
-  themeSwitcher.themeChanged.on(handleThemeChange);
-  themeSwitcher.setTheme(initialTheme);
-
-  return () => {
-    themeSwitcher.themeChanged.off(handleThemeChange);
-  };
-}
+import { initializeTheme } from '@ix-starter/shared';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -104,16 +89,16 @@ function initializeTheme(initialTheme = DEFAULT_THEME): () => void {
 export class AppComponent implements OnInit, OnDestroy {
   activePage = 'get-started';
   private cleanupTheme: (() => void) | null = null;
+  private routerSubscription: Subscription | null = null;
 
   constructor(private router: Router) {
     addIcons({ iconHome, iconDocument, iconBarchart, iconTable, iconDragAndDrop });
   }
 
   ngOnInit() {
-    // Initialize theme
     this.cleanupTheme = initializeTheme('theme-classic-light');
 
-    this.router.events.subscribe(() => {
+    this.routerSubscription = this.router.events.subscribe(() => {
       const url = this.router.url;
       if (url.includes('forms')) this.activePage = 'forms';
       else if (url.includes('charts')) this.activePage = 'charts';
@@ -124,5 +109,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.cleanupTheme?.();
+    this.routerSubscription?.unsubscribe();
   }
 }

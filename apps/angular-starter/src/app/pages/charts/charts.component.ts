@@ -6,31 +6,17 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, TitleComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { registerTheme } from '@siemens/ix-echarts';
+import {
+  buildChartOptions,
+  URL_ECHARTS,
+  CHART_SECTION_TITLE,
+  CHART_LABEL,
+  ICON_DRAG_AND_DROP,
+  CHART_INIT_DELAY_MS,
+} from '@ix-starter/shared';
 
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
 registerTheme(echarts);
-
-const CHART_SCATTER_DATA = [
-  [0, 300], [600, 1500], [1200, 1400], [1800, 1300],
-  [2400, 0], [2900, 200], [3500, 2000],
-];
-
-function buildChartOptions() {
-  return {
-    tooltip: { trigger: 'item' as const },
-    grid: { left: 60, right: 30, top: 30, bottom: 50 },
-    xAxis: { type: 'value' as const, min: 0, max: 3500, interval: 500 },
-    yAxis: { type: 'value' as const, min: 0, max: 2500, interval: 500 },
-    series: [{
-      type: 'line',
-      data: CHART_SCATTER_DATA,
-      symbol: 'circle',
-      symbolSize: 10,
-      itemStyle: { borderWidth: 0 },
-      smooth: false,
-    }],
-  };
-}
 
 @Component({
   selector: 'app-charts',
@@ -41,19 +27,19 @@ function buildChartOptions() {
       <ix-typography format="h1">Charts</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
-        <a href="https://echarts.apache.org" target="_blank" rel="noreferrer">
+        <a [href]="urlEcharts" target="_blank" rel="noreferrer">
           ECharts
         </a>
         theme. This lets you use different chart types in the Siemens Industrial Experience design system.
       </ix-typography>
 
-      <ix-typography format="h2" class="chart-title">Motor Vibration Analysis</ix-typography>
+      <ix-typography format="h2" class="chart-title">{{ chartSectionTitle }}</ix-typography>
 
       <div #chartContainer class="chart-container"></div>
 
       <div class="chart-label">
-        <ix-icon name="drag-and-drop" size="16"></ix-icon>
-        <ix-typography format="body">Pump A-102</ix-typography>
+        <ix-icon [name]="iconDragAndDrop" size="16"></ix-icon>
+        <ix-typography format="body">{{ chartLabel }}</ix-typography>
       </div>
     </div>
   `,
@@ -91,6 +77,12 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('chartContainer') chartContainer!: ElementRef<HTMLDivElement>;
   private chartInstance: echarts.ECharts | null = null;
 
+  protected readonly urlEcharts = URL_ECHARTS;
+  protected readonly chartSectionTitle = CHART_SECTION_TITLE;
+  protected readonly chartLabel = CHART_LABEL;
+  protected readonly iconDragAndDrop = ICON_DRAG_AND_DROP;
+  private readonly chartInitDelayMs = CHART_INIT_DELAY_MS;
+
   private themeChangeHandler = (newTheme: string) => {
     this.chartInstance?.dispose();
     if (!this.chartContainer?.nativeElement) return;
@@ -110,7 +102,7 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
       
       themeSwitcher.themeChanged.on(this.themeChangeHandler);
       window.addEventListener('resize', this.resizeHandler);
-    }, 100);
+    }, this.chartInitDelayMs);
   }
 
   ngOnDestroy() {

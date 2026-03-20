@@ -9,6 +9,7 @@
     "lint": "ng lint"
   },
   "dependencies": {
+    "@ix-starter/shared": "workspace:*",
     "@angular/animations": "^20.0.0",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",

@@ -9,11 +9,12 @@
       This lets you use its features while staying consistent with the Siemens Industrial Experience design system.
     </ix-typography>
 
-    <div class="ag-theme-alpine ix-ag-grid" :style="{ height: GRID_MIN_HEIGHT, maxWidth: GRID_MAX_WIDTH }">
+    <div class="ag-theme-alpine ix-ag-grid">
       <AgGridVue
         :rowData="GRID_ROW_DATA"
         :columnDefs="GRID_COL_DEFS"
-        style="width: 100%; height: 100%"
+        domLayout="autoHeight"
+        style="width: 100%"
       />
     </div>
   </div>
@@ -21,8 +22,11 @@
 
 <script setup lang="ts">
 import { AgGridVue } from 'ag-grid-vue3';
-import { GRID_ROW_DATA, GRID_COL_DEFS, URL_AG_GRID, GRID_MIN_HEIGHT, GRID_MAX_WIDTH } from '@ix-starter/shared';
+import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
+import { GRID_ROW_DATA, GRID_COL_DEFS, URL_AG_GRID } from '@ix-starter/shared';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import '@ix-starter/shared/styles/ag-grid-theme.css';
+
+ModuleRegistry.registerModules([AllCommunityModule]);
 </script>
