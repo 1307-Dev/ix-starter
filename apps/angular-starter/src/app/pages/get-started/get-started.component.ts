@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IxTypography } from '@siemens/ix-angular/standalone';
+import { PAGE_PADDING } from '@ix-starter/shared';
 
 @Component({
   selector: 'app-get-started',
   standalone: true,
   imports: [IxTypography],
   template: `
-    <div style="padding: 2rem">
+    <div [style.padding]="PAGE_PADDING">
       <ix-typography format="h1">
         Get Started with Siemens Industrial Experience
       </ix-typography>
@@ -41,6 +42,8 @@ import { IxTypography } from '@siemens/ix-angular/standalone';
   `,
 })
 export class GetStartedComponent {
+  PAGE_PADDING = PAGE_PADDING;
+
   constructor(private router: Router) {}
 
   navigate(path: string) {

@@ -8,8 +8,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { registerTheme } from '@siemens/ix-echarts';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { initializeIcons } from './utils/icons';
-import { initializeTheme } from '@ix-starter/shared';
+import { initializeTheme, initializeIcons } from '@ix-starter/shared';
 
 // Import iX styles and both theme variants
 import '@siemens/ix/dist/siemens-ix/siemens-ix.css';

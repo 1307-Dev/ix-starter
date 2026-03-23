@@ -6,6 +6,7 @@ import {
   IxMenuItem,
   IxContent
 } from '@siemens/ix-react';
+import { NAV_ITEMS } from '@ix-starter/shared';
 
 import GetStarted from './pages/GetStarted';
 import Forms from './pages/Forms';
@@ -29,34 +30,16 @@ function App() {
       </IxApplicationHeader>
 
       <IxMenu enableToggleTheme>
-        <IxMenuItem 
-          icon="home" 
-          active={isActive('/')}
-          onClick={() => navigate('/')}
-        >
-          Get Started
-        </IxMenuItem>
-        <IxMenuItem 
-          icon="document" 
-          active={isActive('/forms')}
-          onClick={() => navigate('/forms')}
-        >
-          Forms
-        </IxMenuItem>
-        <IxMenuItem 
-          icon="barchart" 
-          active={isActive('/charts')}
-          onClick={() => navigate('/charts')}
-        >
-          Charts
-        </IxMenuItem>
-        <IxMenuItem 
-          icon="table" 
-          active={isActive('/grids')}
-          onClick={() => navigate('/grids')}
-        >
-          Grids
-        </IxMenuItem>
+        {NAV_ITEMS.map((item) => (
+          <IxMenuItem
+            key={item.path}
+            icon={item.icon}
+            active={isActive(item.path)}
+            onClick={() => navigate(item.path)}
+          >
+            {item.label}
+          </IxMenuItem>
+        ))}
       </IxMenu>
 
       <IxContent>

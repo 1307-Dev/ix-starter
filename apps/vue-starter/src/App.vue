@@ -8,32 +8,13 @@
 
     <ix-menu enable-toggle-theme>
       <ix-menu-item
-        icon="home"
-        :active="route.path === '/'"
-        @click="router.push('/')"
+        v-for="item in NAV_ITEMS"
+        :key="item.path"
+        :icon="item.icon"
+        :active="route.path === item.path"
+        @click="router.push(item.path)"
       >
-        Get Started
-      </ix-menu-item>
-      <ix-menu-item
-        icon="document"
-        :active="route.path === '/forms'"
-        @click="router.push('/forms')"
-      >
-        Forms
-      </ix-menu-item>
-      <ix-menu-item
-        icon="barchart"
-        :active="route.path === '/charts'"
-        @click="router.push('/charts')"
-      >
-        Charts
-      </ix-menu-item>
-      <ix-menu-item
-        icon="table"
-        :active="route.path === '/grids'"
-        @click="router.push('/grids')"
-      >
-        Grids
+        {{ item.label }}
       </ix-menu-item>
     </ix-menu>
 
@@ -45,6 +26,7 @@
 
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router';
+import { NAV_ITEMS } from '@ix-starter/shared';
 import logo from './assets/logo.png';
 
 const router = useRouter();

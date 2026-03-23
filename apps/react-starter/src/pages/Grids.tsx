@@ -35,6 +35,7 @@ function Grids() {
           rowData={GRID_ROW_DATA}
           columnDefs={GRID_COL_DEFS}
           domLayout="autoHeight"
+          theme="legacy"
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import {
   IxApplication,
   IxApplicationHeader,
@@ -7,21 +8,14 @@ import {
   IxMenuItem,
   IxContent,
 } from '@siemens/ix-angular/standalone';
-import { addIcons } from '@siemens/ix-icons';
-import {
-  iconHome,
-  iconDocument,
-  iconBarchart,
-  iconTable,
-  iconDragAndDrop,
-} from '@siemens/ix-icons/icons';
-import { initializeTheme } from '@ix-starter/shared';
+import { initializeTheme, initializeIcons, NAV_ITEMS } from '@ix-starter/shared';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     RouterLink,
     IxApplication,
@@ -39,42 +33,16 @@ import { Subscription } from 'rxjs';
       </ix-application-header>
 
       <ix-menu enableToggleTheme>
-        <a routerLink="">
-          <ix-menu-item
-            icon="home"
-            [class.active]="activePage === 'get-started'"
-            (click)="activePage = 'get-started'"
-          >
-            Get Started
-          </ix-menu-item>
-        </a>
-        <a routerLink="forms">
-          <ix-menu-item
-            icon="document"
-            [class.active]="activePage === 'forms'"
-            (click)="activePage = 'forms'"
-          >
-            Forms
-          </ix-menu-item>
-        </a>
-        <a routerLink="charts">
-          <ix-menu-item
-            icon="barchart"
-            [class.active]="activePage === 'charts'"
-            (click)="activePage = 'charts'"
-          >
-            Charts
-          </ix-menu-item>
-        </a>
-        <a routerLink="grids">
-          <ix-menu-item
-            icon="table"
-            [class.active]="activePage === 'grids'"
-            (click)="activePage = 'grids'"
-          >
-            Grids
-          </ix-menu-item>
-        </a>
+        @for (item of navItems; track item.path) {
+          <a [routerLink]="item.path === '/' ? '' : item.path.slice(1)">
+            <ix-menu-item
+              [attr.icon]="item.icon"
+              [class.active]="isActiveRoute(item.path)"
+            >
+              {{ item.label }}
+            </ix-menu-item>
+          </a>
+        }
       </ix-menu>
 
       <ix-content>
@@ -87,24 +55,23 @@ import { Subscription } from 'rxjs';
   `],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  activePage = 'get-started';
+  navItems = NAV_ITEMS;
   private cleanupTheme: (() => void) | null = null;
   private routerSubscription: Subscription | null = null;
 
   constructor(private router: Router) {
-    addIcons({ iconHome, iconDocument, iconBarchart, iconTable, iconDragAndDrop });
+    initializeIcons();
+  }
+
+  isActiveRoute(path: string): boolean {
+    if (path === '/') {
+      return this.router.url === '/' || this.router.url === '';
+    }
+    return this.router.url.includes(path.slice(1));
   }
 
   ngOnInit() {
     this.cleanupTheme = initializeTheme('theme-classic-light');
-
-    this.routerSubscription = this.router.events.subscribe(() => {
-      const url = this.router.url;
-      if (url.includes('forms')) this.activePage = 'forms';
-      else if (url.includes('charts')) this.activePage = 'charts';
-      else if (url.includes('grids')) this.activePage = 'grids';
-      else this.activePage = 'get-started';
-    });
   }
 
   ngOnDestroy() {

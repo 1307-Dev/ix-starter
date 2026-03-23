@@ -87,7 +87,7 @@ pnpm dev
 | `@siemens/ix-angular` | 4.2.0 | Angular bindings |
 | `@siemens/ix-icons` | 3.2.0 | Icon library |
 | `@siemens/ix-echarts` | 2.0.0 | ECharts theme |
-| `@siemens/ix-aggrid` | 2.2.0 | AG Grid theme |
+| `@siemens/ix-aggrid` | 4.0.1 | AG Grid theme |
 
 ## Scripts
 

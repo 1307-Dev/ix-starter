@@ -14,6 +14,7 @@
         :rowData="GRID_ROW_DATA"
         :columnDefs="GRID_COL_DEFS"
         domLayout="autoHeight"
+        theme="legacy"
         style="width: 100%"
       />
     </div>

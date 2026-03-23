@@ -2,17 +2,9 @@ import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { defineCustomElements } from '@siemens/ix/loader';
 import { defineCustomElements as defineIxIconsCustomElements } from '@siemens/ix-icons/loader';
-import {
-  iconHome,
-  iconDocument,
-  iconBarchart,
-  iconTable,
-  iconDragAndDrop,
-  iconBulb,
-} from '@siemens/ix-icons/icons';
 import * as echarts from 'echarts/core';
 import { registerTheme } from '@siemens/ix-echarts';
-import { initializeTheme } from '@ix-starter/shared';
+import { initializeTheme, initializeIcons } from '@ix-starter/shared';
 
 import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
 import '@siemens/ix/dist/siemens-ix/theme/classic-dark.css';
@@ -24,9 +16,8 @@ import FormsPage from './pages/FormsPage.vue';
 import ChartsPage from './pages/ChartsPage.vue';
 import GridsPage from './pages/GridsPage.vue';
 
-// Register icons before defining custom elements
-import { addIcons } from '@siemens/ix-icons';
-addIcons({ iconHome, iconDocument, iconBarchart, iconTable, iconDragAndDrop, iconBulb });
+// Register icons using shared utility
+initializeIcons();
 
 // Initialize iX web components
 defineCustomElements();

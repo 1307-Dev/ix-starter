@@ -10,6 +10,7 @@ import {
   IxRadio,
   IxButton,
 } from '@siemens/ix-angular/standalone';
+import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
 
 @Component({
   selector: 'app-forms-page',
@@ -26,13 +27,13 @@ import {
     IxButton,
   ],
   template: `
-    <div class="forms-page">
+    <div class="forms-page" [style.padding]="PAGE_PADDING">
       <ix-typography format="h1">Forms</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
       </ix-typography>
 
-      <div class="form-container">
+      <div class="form-container" [style.max-width]="FORM_MAX_WIDTH">
         <ix-input
           label="Inspector Name"
           helperText="Enter the certified inspector's full name"
@@ -75,9 +76,6 @@ import {
     </div>
   `,
   styles: [`
-    .forms-page {
-      padding: 2rem;
-    }
     .description {
       display: block;
       margin-top: 0.5rem;
@@ -87,7 +85,6 @@ import {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      max-width: 480px;
     }
     .button-row {
       display: flex;
@@ -98,6 +95,8 @@ import {
   `],
 })
 export class FormsPageComponent {
+  PAGE_PADDING = PAGE_PADDING;
+  FORM_MAX_WIDTH = FORM_MAX_WIDTH;
   inspectorName = '';
   inspectionType = '';
   inspectionDate = '';

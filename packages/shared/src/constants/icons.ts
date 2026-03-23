@@ -1,6 +1,15 @@
 /**
  * Shared icon name constants for consistent usage across apps
  */
+import { addIcons } from '@siemens/ix-icons';
+import {
+  iconHome,
+  iconDocument,
+  iconBarchart,
+  iconTable,
+  iconDragAndDrop,
+  iconBulb,
+} from '@siemens/ix-icons/icons';
 
 // Navigation icons
 export const ICON_HOME = 'home';
@@ -11,6 +20,21 @@ export const ICON_TABLE = 'table';
 // UI icons
 export const ICON_DRAG_AND_DROP = 'drag-and-drop';
 export const ICON_BULB = 'bulb';
+
+/**
+ * Initialize all common icons used across apps.
+ * Call this once at app startup.
+ */
+export function initializeIcons(): void {
+  addIcons({
+    iconHome,
+    iconDocument,
+    iconBarchart,
+    iconTable,
+    iconDragAndDrop,
+    iconBulb,
+  });
+}
 
 // Navigation menu configuration
 export interface NavItem {

@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 2rem">
+  <div :style="{ padding: PAGE_PADDING }">
     <ix-typography format="h1">Forms</ix-typography>
     <ix-typography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
       Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
@@ -50,6 +50,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { PAGE_PADDING } from '@ix-starter/shared';
 
 const inspectorName = ref('');
 const inspectionType = ref('');

@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 2rem">
+  <div :style="{ padding: PAGE_PADDING }">
     <ix-typography format="h1">
       Get Started with Siemens Industrial Experience
     </ix-typography>
@@ -34,5 +34,6 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { PAGE_PADDING } from '@ix-starter/shared';
 const router = useRouter();
 </script>

@@ -33,6 +33,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
           [rowData]="rowData"
           [columnDefs]="columnDefs"
           domLayout="autoHeight"
+          theme="legacy"
         />
       </div>
     </div>

@@ -11,6 +11,7 @@ import {
   IxButton,
   IxTypography,
 } from '@siemens/ix-react';
+import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
 
 function Forms() {
   const [inspectorName, setInspectorName] = useState('');
@@ -30,13 +31,13 @@ function Forms() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div style={{ padding: PAGE_PADDING }}>
       <IxTypography format="h1">Forms</IxTypography>
       <IxTypography format="body" style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}>
         Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
       </IxTypography>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '480px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }}>
 
         <IxInput
           label="Inspector Name"
