@@ -1,56 +1,16 @@
-<template>
-  <div :style="{ padding: PAGE_PADDING }">
-    <ix-typography format="h1">Forms</ix-typography>
-    <ix-typography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
-      Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
-    </ix-typography>
-
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 480px">
-      <ix-input
-        label="Inspector Name"
-        helper-text="Enter the certified inspector's full name"
-        :value="inspectorName"
-        @value-change="inspectorName = $event.detail"
-      ></ix-input>
-
-      <ix-select
-        label="Inspection Type"
-        helper-text="Choose the inspection to perform"
-        @value-change="inspectionType = $event.detail"
-      >
-        <ix-select-item value="visual" label="Visual Inspection"></ix-select-item>
-        <ix-select-item value="dimensional" label="Dimensional Check"></ix-select-item>
-        <ix-select-item value="functional" label="Functional Test"></ix-select-item>
-        <ix-select-item value="pressure" label="Pressure Test"></ix-select-item>
-      </ix-select>
-
-      <ix-date-input
-        label="Inspection Date"
-        helper-text="Schedule the inspection"
-        @value-change="inspectionDate = $event.detail"
-      ></ix-date-input>
-
-      <ix-radio-group
-        label="Inspection Mode"
-        helper-text="Inline inspections take place during production. Offline sampling requires batch removal for lab testing."
-        :value="inspectionMode"
-        @value-change="inspectionMode = $event.detail"
-      >
-        <ix-radio value="inline" label="In-line inspection"></ix-radio>
-        <ix-radio value="offline" label="Offline sampling"></ix-radio>
-      </ix-radio-group>
-
-      <div style="display: flex; gap: 1rem; margin-top: 0.5rem; justify-content: flex-end">
-        <ix-button variant="secondary" @click="handleCancel">Cancel</ix-button>
-        <ix-button variant="primary" @click="handleSave">Save</ix-button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue';
-import { PAGE_PADDING } from '@ix-starter/shared';
+import {
+  IxTypography,
+  IxInput,
+  IxSelect,
+  IxSelectItem,
+  IxDateInput,
+  IxRadioGroup,
+  IxRadio,
+  IxButton,
+} from '@siemens/ix-vue';
+import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
 
 const inspectorName = ref('');
 const inspectionType = ref('');
@@ -73,3 +33,53 @@ function handleCancel() {
   inspectionMode.value = '';
 }
 </script>
+
+<template>
+  <div :style="{ padding: PAGE_PADDING }">
+    <IxTypography format="h1">Forms</IxTypography>
+    <IxTypography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
+      Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
+    </IxTypography>
+
+    <div :style="{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }">
+      <IxInput
+        label="Inspector Name"
+        helper-text="Enter the certified inspector's full name"
+        :value="inspectorName"
+        @valueChange="inspectorName = $event.detail"
+      />
+
+      <IxSelect
+        label="Inspection Type"
+        helper-text="Choose the inspection to perform"
+        @valueChange="inspectionType = $event.detail"
+      >
+        <IxSelectItem value="visual" label="Visual Inspection" />
+        <IxSelectItem value="dimensional" label="Dimensional Check" />
+        <IxSelectItem value="functional" label="Functional Test" />
+        <IxSelectItem value="pressure" label="Pressure Test" />
+      </IxSelect>
+
+      <IxDateInput
+        label="Inspection Date"
+        helper-text="Schedule the inspection"
+        @valueChange="inspectionDate = $event.detail"
+      />
+
+      <IxRadioGroup
+        label="Inspection Mode"
+        helper-text="Inline inspections take place during production. Offline sampling requires batch removal for lab testing."
+        :value="inspectionMode"
+        @valueChange="inspectionMode = $event.detail"
+      >
+        <IxRadio value="inline" label="In-line inspection" />
+        <IxRadio value="offline" label="Offline sampling" />
+      </IxRadioGroup>
+
+      <div style="display: flex; gap: 1rem; margin-top: 0.5rem; justify-content: flex-end">
+        <IxButton variant="secondary" @click="handleCancel">Cancel</IxButton>
+        <IxButton variant="primary" @click="handleSave">Save</IxButton>
+      </div>
+    </div>
+  </div>
+</template>

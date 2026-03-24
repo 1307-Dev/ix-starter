@@ -199,6 +199,9 @@ importers:
       '@siemens/ix-icons':
         specifier: ^3.2.0
         version: 3.4.0
+      '@siemens/ix-vue':
+        specifier: ^4.2.0
+        version: 4.3.0(@siemens/ix-icons@3.4.0)(@stencil/core@4.17.2)(vue-router@4.6.4(vue@3.5.30(typescript@5.6.3)))(vue@3.5.30(typescript@5.6.3))
       ag-grid-community:
         specifier: ^33.0.0
         version: 33.3.2
@@ -2248,6 +2251,12 @@ packages:
       react: ^18 || ^19
       react-dom: ^18 || ^19
 
+  '@siemens/ix-vue@4.3.0':
+    resolution: {integrity: sha512-sUsGF2pKiK06Ke343GrLnO6xTz/+w+K65ZoEXCIuWHv+qsM92R9EbTKDaphXTdkoLIhLIq12Qbh4eSxJzjlulg==}
+    peerDependencies:
+      '@siemens/ix-icons': ^3.2.0
+      vue: '>=3.2.45'
+
   '@siemens/ix@4.2.0':
     resolution: {integrity: sha512-FvgKqBdbV1feAf8jI2nBR1/saO4ulsNRYXVmS2qgXzH7Jp1pmdbVlf0hUSQlY8tuk0XWYUPmjdW6kLeyO57o/A==}
     peerDependencies:
@@ -2293,6 +2302,18 @@ packages:
       '@stencil/core': '>=3 || >= 4.0.0-beta.0 || >= 4.0.0'
       react: ^18 || ^19
       react-dom: ^18 || ^19
+
+  '@stencil/vue-output-target@0.11.8':
+    resolution: {integrity: sha512-R/kQoN15irgL7NJxWaUNSmwDLfoDBZjlYaXNnW3LHlF30TYfyez6pRgD7ZglSSTVktMtCXz6ZPhg0uq59VkhOw==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
+      vue: ^3.4.38
+      vue-router: ^4.5.0
+    peerDependenciesMeta:
+      '@stencil/core':
+        optional: true
+      vue-router:
+        optional: true
 
   '@ts-morph/common@0.23.0':
     resolution: {integrity: sha512-m7Lllj9n/S6sOkCkRftpM7L24uvmfXQFedlW/4hENcuJH1HHm9u5EgxZb9uVjQSCGrbBWBkOGgcTxNg36r6ywA==}
@@ -7308,6 +7329,16 @@ snapshots:
       - '@stencil/core'
       - '@types/react'
 
+  '@siemens/ix-vue@4.3.0(@siemens/ix-icons@3.4.0)(@stencil/core@4.17.2)(vue-router@4.6.4(vue@3.5.30(typescript@5.6.3)))(vue@3.5.30(typescript@5.6.3))':
+    dependencies:
+      '@siemens/ix': 4.3.0(@siemens/ix-icons@3.4.0)
+      '@siemens/ix-icons': 3.4.0
+      '@stencil/vue-output-target': 0.11.8(@stencil/core@4.17.2)(vue-router@4.6.4(vue@3.5.30(typescript@5.6.3)))(vue@3.5.30(typescript@5.6.3))
+      vue: 3.5.30(typescript@5.6.3)
+    transitivePeerDependencies:
+      - '@stencil/core'
+      - vue-router
+
   '@siemens/ix@4.2.0(@siemens/ix-icons@3.4.0)':
     dependencies:
       '@floating-ui/dom': 1.7.6
@@ -7367,6 +7398,13 @@ snapshots:
       ts-morph: 22.0.0
     transitivePeerDependencies:
       - '@types/react'
+
+  '@stencil/vue-output-target@0.11.8(@stencil/core@4.17.2)(vue-router@4.6.4(vue@3.5.30(typescript@5.6.3)))(vue@3.5.30(typescript@5.6.3))':
+    dependencies:
+      vue: 3.5.30(typescript@5.6.3)
+    optionalDependencies:
+      '@stencil/core': 4.17.2
+      vue-router: 4.6.4(vue@3.5.30(typescript@5.6.3))
 
   '@ts-morph/common@0.23.0':
     dependencies:

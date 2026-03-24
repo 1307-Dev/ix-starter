@@ -1,82 +1,74 @@
-<template>
-  <div class="charts-page">
-    <ix-typography format="h1">Charts</ix-typography>
-    <ix-typography format="body" class="description">
-      Siemens Industrial Experience provides an
-      <a :href="URL_ECHARTS" target="_blank" rel="noreferrer">
-        ECharts
-      </a>
-      theme. This lets you use different chart types in the Siemens Industrial Experience design system.
-    </ix-typography>
-
-    <ix-typography format="h2" class="chart-title">{{ CHART_SECTION_TITLE }}</ix-typography>
-
-    <div ref="chartRef" class="chart-container"></div>
-
-    <div class="chart-label">
-      <ix-icon :name="ICON_DRAG_AND_DROP" size="16"></ix-icon>
-      <ix-typography format="body">{{ CHART_LABEL }}</ix-typography>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
+import { IxTypography, IxIcon } from '@siemens/ix-vue';
 import { themeSwitcher } from '@siemens/ix';
 import * as echarts from 'echarts/core';
-import { LineChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent, TitleComponent } from 'echarts/components';
-import { CanvasRenderer } from 'echarts/renderers';
 import {
   buildChartOptions,
   URL_ECHARTS,
   CHART_SECTION_TITLE,
   CHART_LABEL,
   ICON_DRAG_AND_DROP,
-  CHART_INIT_DELAY_MS,
+  CHART_MAX_WIDTH,
+  CHART_HEIGHT,
+  PAGE_PADDING,
 } from '@ix-starter/shared';
 
-echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
+// Note: ECharts components are registered in main.ts
 
 const chartRef = ref<HTMLDivElement | null>(null);
-let instance: echarts.ECharts | null = null;
+const instance = shallowRef<echarts.ECharts | null>(null);
 
 function handleThemeChange(newTheme: string) {
-  instance?.dispose();
+  instance.value?.dispose();
   if (!chartRef.value) return;
-  instance = echarts.init(chartRef.value, newTheme);
-  instance.setOption(buildChartOptions());
+  instance.value = echarts.init(chartRef.value, newTheme);
+  instance.value.setOption(buildChartOptions());
 }
 
 function handleResize() {
-  instance?.resize();
+  instance.value?.resize();
 }
 
-onMounted(async () => {
-  await nextTick();
-  // Give DOM time to fully render
-  setTimeout(() => {
-    if (!chartRef.value) return;
-    const theme = themeSwitcher.getCurrentTheme();
-    instance = echarts.init(chartRef.value, theme);
-    instance.setOption(buildChartOptions());
-    themeSwitcher.themeChanged.on(handleThemeChange);
-    window.addEventListener('resize', handleResize);
-  }, CHART_INIT_DELAY_MS);
+onMounted(() => {
+  if (!chartRef.value) return;
+  const theme = themeSwitcher.getCurrentTheme();
+  instance.value = echarts.init(chartRef.value, theme);
+  instance.value.setOption(buildChartOptions());
+  themeSwitcher.themeChanged.on(handleThemeChange);
+  window.addEventListener('resize', handleResize);
 });
 
 onUnmounted(() => {
   themeSwitcher.themeChanged.off(handleThemeChange);
   window.removeEventListener('resize', handleResize);
-  instance?.dispose();
+  instance.value?.dispose();
 });
 </script>
 
-<style scoped>
-.charts-page {
-  padding: 2rem;
-}
+<template>
+  <div :style="{ padding: PAGE_PADDING }">
+    <IxTypography format="h1">Charts</IxTypography>
+    <IxTypography format="body" class="description">
+      Siemens Industrial Experience provides an
+      <a :href="URL_ECHARTS" target="_blank" rel="noreferrer">
+        ECharts
+      </a>
+      theme. This lets you use different chart types in the Siemens Industrial Experience design system.
+    </IxTypography>
 
+    <IxTypography format="h2" class="chart-title">{{ CHART_SECTION_TITLE }}</IxTypography>
+
+    <div ref="chartRef" :style="{ width: '100%', maxWidth: CHART_MAX_WIDTH, height: CHART_HEIGHT }"></div>
+
+    <div :style="{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', maxWidth: CHART_MAX_WIDTH }">
+      <IxIcon :name="ICON_DRAG_AND_DROP" size="16" />
+      <IxTypography format="body">{{ CHART_LABEL }}</IxTypography>
+    </div>
+  </div>
+</template>
+
+<style scoped>
 .description {
   display: block;
   margin-top: 0.5rem;
@@ -89,20 +81,5 @@ onUnmounted(() => {
 
 .chart-title {
   margin-bottom: 1rem;
-}
-
-.chart-container {
-  width: 100%;
-  max-width: 700px;
-  height: 400px;
-}
-
-.chart-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  max-width: 700px;
 }
 </style>

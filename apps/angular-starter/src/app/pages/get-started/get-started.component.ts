@@ -18,17 +18,17 @@ import { PAGE_PADDING } from '@ix-starter/shared';
 
       <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 0.5rem">
         <li>
-          <a (click)="navigate('/forms')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+          <a href="/forms" (click)="$event.preventDefault(); navigate('/forms')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
             &gt; Forms
           </a>
         </li>
         <li>
-          <a (click)="navigate('/charts')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+          <a href="/charts" (click)="$event.preventDefault(); navigate('/charts')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
             &gt; Charts
           </a>
         </li>
         <li>
-          <a (click)="navigate('/grids')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+          <a href="/grids" (click)="$event.preventDefault(); navigate('/grids')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
             &gt; Grids
           </a>
         </li>

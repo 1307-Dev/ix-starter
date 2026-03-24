@@ -1,13 +1,25 @@
+<script setup lang="ts">
+import { IxTypography } from '@siemens/ix-vue';
+import { AgGridVue } from 'ag-grid-vue3';
+import { GRID_ROW_DATA, GRID_COL_DEFS, URL_AG_GRID, PAGE_PADDING } from '@ix-starter/shared';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+import '@ix-starter/shared/styles/ag-grid-theme.css';
+
+// Note: AG Grid modules are registered in main.ts
+</script>
+
 <template>
-  <div style="padding: 2rem">
-    <ix-typography format="h1">Grids</ix-typography>
-    <ix-typography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
+  <div :style="{ padding: PAGE_PADDING }">
+    <IxTypography format="h1">Grids</IxTypography>
+    <IxTypography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
       Siemens Industrial Experience integrates the data grid library
       <a :href="URL_AG_GRID" target="_blank" rel="noreferrer" style="text-decoration: underline">
         AG Grid
       </a>.
+      <br />
       This lets you use its features while staying consistent with the Siemens Industrial Experience design system.
-    </ix-typography>
+    </IxTypography>
 
     <div class="ag-theme-alpine ix-ag-grid">
       <AgGridVue
@@ -20,14 +32,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { AgGridVue } from 'ag-grid-vue3';
-import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
-import { GRID_ROW_DATA, GRID_COL_DEFS, URL_AG_GRID } from '@ix-starter/shared';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import '@ix-starter/shared/styles/ag-grid-theme.css';
-
-ModuleRegistry.registerModules([AllCommunityModule]);
-</script>

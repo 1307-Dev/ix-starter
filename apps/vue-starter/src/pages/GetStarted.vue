@@ -1,11 +1,19 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { IxTypography } from '@siemens/ix-vue';
+import { PAGE_PADDING, URL_IX_DOCS } from '@ix-starter/shared';
+
+const router = useRouter();
+</script>
+
 <template>
   <div :style="{ padding: PAGE_PADDING }">
-    <ix-typography format="h1">
+    <IxTypography format="h1">
       Get Started with Siemens Industrial Experience
-    </ix-typography>
-    <ix-typography format="body" style="display: block; margin-top: 1rem; margin-bottom: 1.5rem">
+    </IxTypography>
+    <IxTypography format="body" style="display: block; margin-top: 1rem; margin-bottom: 1.5rem">
       The starter app includes an application shell and three example pages with commonly used components.
-    </ix-typography>
+    </IxTypography>
 
     <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 0.5rem">
       <li>
@@ -25,15 +33,9 @@
       </li>
     </ul>
 
-    <ix-typography format="body" style="display: block">
+    <IxTypography format="body" style="display: block">
       Browse the full component library at
-      <a href="https://ix.siemens.io" target="_blank" rel="noreferrer">ix.siemens.io</a>
-    </ix-typography>
+      <a :href="URL_IX_DOCS" target="_blank" rel="noreferrer">ix.siemens.io</a>
+    </IxTypography>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useRouter } from 'vue-router';
-import { PAGE_PADDING } from '@ix-starter/shared';
-const router = useRouter();
-</script>
