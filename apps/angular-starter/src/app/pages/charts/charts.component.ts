@@ -1,29 +1,26 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { IxTypography, IxIcon } from '@siemens/ix-angular/standalone';
 import { themeSwitcher } from '@siemens/ix';
+import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
-import { LineChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent, TitleComponent } from 'echarts/components';
-import { CanvasRenderer } from 'echarts/renderers';
-import { registerTheme } from '@siemens/ix-echarts';
 import {
   buildChartOptions,
   URL_ECHARTS,
   CHART_SECTION_TITLE,
   CHART_LABEL,
   ICON_DRAG_AND_DROP,
+  CHART_MAX_WIDTH,
+  CHART_HEIGHT,
   CHART_INIT_DELAY_MS,
+  PAGE_PADDING,
 } from '@ix-starter/shared';
-
-echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
-registerTheme(echarts);
 
 @Component({
   selector: 'app-charts',
   standalone: true,
   imports: [IxTypography, IxIcon],
   template: `
-    <div class="charts-page">
+    <div class="charts-page" [style.padding]="PAGE_PADDING">
       <ix-typography format="h1">Charts</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
@@ -35,18 +32,15 @@ registerTheme(echarts);
 
       <ix-typography format="h2" class="chart-title">{{ chartSectionTitle }}</ix-typography>
 
-      <div #chartContainer class="chart-container"></div>
+      <div #chartContainer [style.width]="'100%'" [style.max-width]="CHART_MAX_WIDTH" [style.height]="CHART_HEIGHT"></div>
 
-      <div class="chart-label">
-        <ix-icon [name]="iconDragAndDrop" size="16"></ix-icon>
+      <div class="chart-label" [style.max-width]="CHART_MAX_WIDTH">
+        <ix-icon name="drag-and-drop" size="16"></ix-icon>
         <ix-typography format="body">{{ chartLabel }}</ix-typography>
       </div>
     </div>
   `,
   styles: [`
-    .charts-page {
-      padding: 2rem;
-    }
     .description {
       display: block;
       margin-top: 0.5rem;
@@ -58,18 +52,12 @@ registerTheme(echarts);
     .chart-title {
       margin-bottom: 1rem;
     }
-    .chart-container {
-      width: 100%;
-      max-width: 700px;
-      height: 400px;
-    }
     .chart-label {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
       margin-top: 1rem;
-      max-width: 700px;
     }
   `],
 })
@@ -81,12 +69,15 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   protected readonly chartSectionTitle = CHART_SECTION_TITLE;
   protected readonly chartLabel = CHART_LABEL;
   protected readonly iconDragAndDrop = ICON_DRAG_AND_DROP;
+  protected readonly CHART_MAX_WIDTH = CHART_MAX_WIDTH;
+  protected readonly CHART_HEIGHT = CHART_HEIGHT;
+  protected readonly PAGE_PADDING = PAGE_PADDING;
   private readonly chartInitDelayMs = CHART_INIT_DELAY_MS;
 
   private themeChangeHandler = (newTheme: string) => {
     this.chartInstance?.dispose();
     if (!this.chartContainer?.nativeElement) return;
-    this.chartInstance = echarts.init(this.chartContainer.nativeElement, newTheme);
+    this.chartInstance = echarts.init(this.chartContainer.nativeElement, convertThemeName(newTheme));
     this.chartInstance.setOption(buildChartOptions());
   };
 
@@ -96,7 +87,7 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      const theme = themeSwitcher.getCurrentTheme();
+      const theme = convertThemeName(themeSwitcher.getCurrentTheme());
       this.chartInstance = echarts.init(this.chartContainer.nativeElement, theme);
       this.chartInstance.setOption(buildChartOptions());
       

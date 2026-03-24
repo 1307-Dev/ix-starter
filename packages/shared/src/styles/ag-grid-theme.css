@@ -6,9 +6,9 @@
 .ix-ag-grid {
   --ag-row-border-style: solid;
   --ag-row-border-width: 1px;
+  --ag-header-column-resize-handle-display: none;
 }
 
-/* Light theme - using iX CSS variables */
 body.theme-classic-light .ix-ag-grid {
   --ag-background-color: var(--theme-color-component-1);
   --ag-header-background-color: var(--theme-color-component-2);
@@ -22,7 +22,6 @@ body.theme-classic-light .ix-ag-grid {
   --ag-header-foreground-color: var(--theme-color-std-text);
 }
 
-/* Dark theme - using iX CSS variables */
 body.theme-classic-dark .ix-ag-grid {
   --ag-background-color: var(--theme-color-component-1);
   --ag-header-background-color: var(--theme-color-component-2);

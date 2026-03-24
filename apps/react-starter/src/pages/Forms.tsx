@@ -41,6 +41,7 @@ function Forms() {
 
         <IxInput
           label="Inspector Name"
+          placeholder="Jane Doe"
           helperText="Enter the certified inspector's full name"
           value={inspectorName}
           onValueChange={(e) => setInspectorName(e.detail)}

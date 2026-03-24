@@ -17,17 +17,17 @@ const router = useRouter();
 
     <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 0.5rem">
       <li>
-        <a href="#/forms" @click.prevent="router.push('/forms')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+        <a href="/forms" @click.prevent="router.push('/forms')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
           &gt; Forms
         </a>
       </li>
       <li>
-        <a href="#/charts" @click.prevent="router.push('/charts')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+        <a href="/charts" @click.prevent="router.push('/charts')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
           &gt; Charts
         </a>
       </li>
       <li>
-        <a href="#/grids" @click.prevent="router.push('/grids')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
+        <a href="/grids" @click.prevent="router.push('/grids')" style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline">
           &gt; Grids
         </a>
       </li>

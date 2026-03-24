@@ -5,8 +5,6 @@ import { GRID_ROW_DATA, GRID_COL_DEFS, URL_AG_GRID, PAGE_PADDING } from '@ix-sta
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import '@ix-starter/shared/styles/ag-grid-theme.css';
-
-// Note: AG Grid modules are registered in main.ts
 </script>
 
 <template>

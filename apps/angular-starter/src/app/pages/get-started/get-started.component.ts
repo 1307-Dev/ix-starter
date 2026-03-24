@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IxTypography } from '@siemens/ix-angular/standalone';
-import { PAGE_PADDING } from '@ix-starter/shared';
+import { PAGE_PADDING, URL_IX_DOCS } from '@ix-starter/shared';
 
 @Component({
   selector: 'app-get-started',
@@ -36,13 +36,14 @@ import { PAGE_PADDING } from '@ix-starter/shared';
 
       <ix-typography format="body" style="display: block">
         Browse the full component library at
-        <a href="https://ix.siemens.io" target="_blank" rel="noreferrer">ix.siemens.io</a>
+        <a [href]="URL_IX_DOCS" target="_blank" rel="noreferrer">ix.siemens.io</a>
       </ix-typography>
     </div>
   `,
 })
 export class GetStartedComponent {
   PAGE_PADDING = PAGE_PADDING;
+  URL_IX_DOCS = URL_IX_DOCS;
 
   constructor(private router: Router) {}
 

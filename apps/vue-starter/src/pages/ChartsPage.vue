@@ -2,6 +2,7 @@
 import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
 import { IxTypography, IxIcon } from '@siemens/ix-vue';
 import { themeSwitcher } from '@siemens/ix';
+import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
 import {
   buildChartOptions,
@@ -14,15 +15,13 @@ import {
   PAGE_PADDING,
 } from '@ix-starter/shared';
 
-// Note: ECharts components are registered in main.ts
-
 const chartRef = ref<HTMLDivElement | null>(null);
 const instance = shallowRef<echarts.ECharts | null>(null);
 
 function handleThemeChange(newTheme: string) {
   instance.value?.dispose();
   if (!chartRef.value) return;
-  instance.value = echarts.init(chartRef.value, newTheme);
+  instance.value = echarts.init(chartRef.value, convertThemeName(newTheme));
   instance.value.setOption(buildChartOptions());
 }
 
@@ -32,7 +31,7 @@ function handleResize() {
 
 onMounted(() => {
   if (!chartRef.value) return;
-  const theme = themeSwitcher.getCurrentTheme();
+  const theme = convertThemeName(themeSwitcher.getCurrentTheme());
   instance.value = echarts.init(chartRef.value, theme);
   instance.value.setOption(buildChartOptions());
   themeSwitcher.themeChanged.on(handleThemeChange);

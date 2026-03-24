@@ -8,8 +8,7 @@ import {
   IxMenuItem,
   IxContent,
 } from '@siemens/ix-angular/standalone';
-import { initializeTheme, initializeIcons, NAV_ITEMS } from '@ix-starter/shared';
-import { Subscription } from 'rxjs';
+import { initializeTheme, NAV_ITEMS } from '@ix-starter/shared';
 
 @Component({
   selector: 'app-root',
@@ -57,17 +56,14 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   navItems = NAV_ITEMS;
   private cleanupTheme: (() => void) | null = null;
-  private routerSubscription: Subscription | null = null;
 
-  constructor(private router: Router) {
-    initializeIcons();
-  }
+  constructor(private router: Router) {}
 
   isActiveRoute(path: string): boolean {
     if (path === '/') {
       return this.router.url === '/' || this.router.url === '';
     }
-    return this.router.url.includes(path.slice(1));
+    return this.router.url === path || this.router.url.startsWith(path + '/');
   }
 
   ngOnInit() {
@@ -76,6 +72,5 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.cleanupTheme?.();
-    this.routerSubscription?.unsubscribe();
   }
 }

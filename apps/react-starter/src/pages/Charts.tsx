@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { IxIcon, IxTypography } from '@siemens/ix-react';
 import { themeSwitcher } from '@siemens/ix';
+import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
 import {
   buildChartOptions,
@@ -14,8 +15,6 @@ import {
   ICON_DRAG_AND_DROP,
   PAGE_PADDING,
 } from '@ix-starter/shared';
-
-// Note: ECharts components are registered in main.tsx
 
 function Charts() {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -36,14 +35,14 @@ function Charts() {
       existingInstance.dispose();
     }
 
-    const theme = themeSwitcher.getCurrentTheme();
+    const theme = convertThemeName(themeSwitcher.getCurrentTheme());
     instanceRef.current = echarts.init(chartRef.current, theme);
     instanceRef.current.setOption(buildChartOptions());
 
     const handleThemeChange = (newTheme: string) => {
       instanceRef.current?.dispose();
       if (!chartRef.current) return;
-      instanceRef.current = echarts.init(chartRef.current, newTheme);
+      instanceRef.current = echarts.init(chartRef.current, convertThemeName(newTheme));
       instanceRef.current.setOption(buildChartOptions());
     };
 

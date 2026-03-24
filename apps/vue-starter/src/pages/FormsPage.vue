@@ -44,6 +44,7 @@ function handleCancel() {
     <div :style="{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }">
       <IxInput
         label="Inspector Name"
+        placeholder="Jane Doe"
         helper-text="Enter the certified inspector's full name"
         :value="inspectorName"
         @valueChange="inspectorName = $event.detail"

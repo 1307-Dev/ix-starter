@@ -6,25 +6,19 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent, TitleComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { registerTheme } from '@siemens/ix-echarts';
+import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { initializeTheme, initializeIcons } from '@ix-starter/shared';
 
-// Import iX styles and both theme variants
 import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
 import '@siemens/ix/dist/siemens-ix/theme/classic-dark.css';
 import '@siemens/ix/dist/siemens-ix/theme/classic-light.css';
 
-// Initialize icons once at app startup
 initializeIcons();
-
-// Register ECharts components BEFORE theme registration
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
-
-// Register ECharts theme
 registerTheme(echarts);
-
-// Initialize theme using shared utility
+ModuleRegistry.registerModules([AllCommunityModule]);
 initializeTheme('theme-classic-light');
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

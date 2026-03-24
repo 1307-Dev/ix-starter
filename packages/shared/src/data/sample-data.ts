@@ -2,7 +2,6 @@
  * Sample data for demo purposes across apps
  */
 
-// Chart data - Motor vibration analysis
 export const CHART_SCATTER_DATA = [
   [0, 300],
   [600, 1500],
@@ -13,7 +12,6 @@ export const CHART_SCATTER_DATA = [
   [3500, 2000],
 ];
 
-// Chart axis configuration
 export const CHART_X_AXIS = {
   type: 'value' as const,
   min: 0,
@@ -28,7 +26,6 @@ export const CHART_Y_AXIS = {
   interval: 500,
 };
 
-// Grid data - Industrial equipment inventory
 export interface GridRowData {
   series: string;
   model: string;
@@ -44,14 +41,12 @@ export const GRID_ROW_DATA: GridRowData[] = [
   { series: 'SINUMERIK', model: '828D', quantity: 73 },
 ];
 
-// Grid column definitions - typed for GridRowData
 export const GRID_COL_DEFS: { field: keyof GridRowData; headerName: string; flex: number }[] = [
   { field: 'series', headerName: 'Series', flex: 1 },
   { field: 'model', headerName: 'Model', flex: 1 },
   { field: 'quantity', headerName: 'Quantity', flex: 1 },
 ];
 
-// Chart options builder
 export function buildChartOptions() {
   return {
     tooltip: { trigger: 'item' as const },

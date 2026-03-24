@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { IxTypography } from '@siemens/ix-react';
-import { PAGE_PADDING } from '@ix-starter/shared';
+import { PAGE_PADDING, URL_IX_DOCS } from '@ix-starter/shared';
 
 function GetStarted() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function GetStarted() {
 
       <IxTypography format="body" style={{ display: 'block' }}>
         Browse the full component library at{' '}
-        <a href="https://ix.siemens.io" target="_blank" rel="noreferrer">ix.siemens.io</a>
+        <a href={URL_IX_DOCS} target="_blank" rel="noreferrer">ix.siemens.io</a>
       </IxTypography>
     </div>
   );

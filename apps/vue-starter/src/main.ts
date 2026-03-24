@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import { defineCustomElements } from '@siemens/ix/loader';
 import { defineCustomElements as defineIxIconsCustomElements } from '@siemens/ix-icons/loader';
 import * as echarts from 'echarts/core';
@@ -17,22 +17,16 @@ import './styles/global.css';
 
 import App from './App.vue';
 
-// Register icons using shared utility
 initializeIcons();
-
-// Initialize iX web components (required by @siemens/ix-vue wrappers)
 defineCustomElements();
 defineIxIconsCustomElements();
 
-// Register ECharts components and theme once at startup
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
 registerTheme(echarts);
-
-// Register AG Grid modules once at startup
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     { path: '/', component: () => import('./pages/GetStarted.vue') },
     { path: '/forms', component: () => import('./pages/FormsPage.vue') },
@@ -53,7 +47,6 @@ app.config.errorHandler = (err, instance, info) => {
 
 app.use(router);
 
-// Initialize theme before mount to prevent flash
 initializeTheme('theme-classic-light');
 
 app.mount('#app');

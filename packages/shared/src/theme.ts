@@ -18,13 +18,9 @@ export function initializeTheme(initialTheme: ThemeName = 'theme-classic-light')
     document.body.classList.add(newTheme);
   };
 
-  // Listen to theme changes
   themeSwitcher.themeChanged.on(handleThemeChange);
-
-  // Set initial theme
   themeSwitcher.setTheme(initialTheme);
 
-  // Return cleanup function
   return () => {
     themeSwitcher.themeChanged.off(handleThemeChange);
   };

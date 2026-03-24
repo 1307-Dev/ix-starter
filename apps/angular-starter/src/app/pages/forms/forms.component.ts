@@ -36,6 +36,7 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
       <div class="form-container" [style.max-width]="FORM_MAX_WIDTH">
         <ix-input
           label="Inspector Name"
+          placeholder="Jane Doe"
           helperText="Enter the certified inspector's full name"
           [value]="inspectorName"
           (valueChange)="inspectorName = $event.detail"
@@ -94,7 +95,7 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
     }
   `],
 })
-export class FormsPageComponent {
+export class FormsComponent {
   PAGE_PADDING = PAGE_PADDING;
   FORM_MAX_WIDTH = FORM_MAX_WIDTH;
   inspectorName = '';
