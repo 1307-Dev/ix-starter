@@ -9,21 +9,31 @@ import '@ix-starter/shared/styles/ag-grid-theme.css';
 
 <template>
   <div :style="{ padding: PAGE_PADDING }">
-    <IxTypography format="h1">Grids</IxTypography>
-    <IxTypography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
+    <IxTypography format="h1">
+      Grids
+    </IxTypography>
+    <IxTypography
+      format="body"
+      style="display: block; margin-top: 0.5rem; margin-bottom: 2rem"
+    >
       Siemens Industrial Experience integrates the data grid library
-      <a :href="URL_AG_GRID" target="_blank" rel="noreferrer" style="text-decoration: underline">
+      <a
+        :href="URL_AG_GRID"
+        target="_blank"
+        rel="noreferrer"
+        style="text-decoration: underline"
+      >
         AG Grid
       </a>.
-      <br />
+      <br>
       This lets you use its features while staying consistent with the Siemens Industrial Experience design system.
     </IxTypography>
 
     <div class="ag-theme-alpine ix-ag-grid">
       <AgGridVue
-        :rowData="GRID_ROW_DATA"
-        :columnDefs="GRID_COL_DEFS"
-        domLayout="autoHeight"
+        :row-data="GRID_ROW_DATA"
+        :column-defs="GRID_COL_DEFS"
+        dom-layout="autoHeight"
         theme="legacy"
         style="width: 100%"
       />

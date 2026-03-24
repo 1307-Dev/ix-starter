@@ -19,8 +19,9 @@ export default tseslint.config(
       ecmaVersion: 2020,
       parserOptions: {
         parser: tseslint.parser,
-        project: './tsconfig.json',
+        project: ['./tsconfig.json', './tsconfig.node.json'],
         tsconfigRootDir: __dirname,
+        extraFileExtensions: ['.vue'],
       },
     },
     rules: {

@@ -17,9 +17,13 @@ const route = useRoute();
 <template>
   <IxApplication>
     <IxApplicationHeader name="Siemens Industrial Experience Starter App">
-      <div slot="logo">
-        <img :src="logo" alt="Siemens" style="height: 40px" />
-      </div>
+      <template #logo>
+        <img
+          :src="logo"
+          alt="Siemens"
+          style="height: 40px"
+        >
+      </template>
     </IxApplicationHeader>
 
     <IxMenu enable-toggle-theme>

@@ -47,22 +47,44 @@ onUnmounted(() => {
 
 <template>
   <div :style="{ padding: PAGE_PADDING }">
-    <IxTypography format="h1">Charts</IxTypography>
-    <IxTypography format="body" class="description">
+    <IxTypography format="h1">
+      Charts
+    </IxTypography>
+    <IxTypography
+      format="body"
+      class="description"
+    >
       Siemens Industrial Experience provides an
-      <a :href="URL_ECHARTS" target="_blank" rel="noreferrer">
+      <a
+        :href="URL_ECHARTS"
+        target="_blank"
+        rel="noreferrer"
+      >
         ECharts
       </a>
       theme. This lets you use different chart types in the Siemens Industrial Experience design system.
     </IxTypography>
 
-    <IxTypography format="h2" class="chart-title">{{ CHART_SECTION_TITLE }}</IxTypography>
+    <IxTypography
+      format="h2"
+      class="chart-title"
+    >
+      {{ CHART_SECTION_TITLE }}
+    </IxTypography>
 
-    <div ref="chartRef" :style="{ width: '100%', maxWidth: CHART_MAX_WIDTH, height: CHART_HEIGHT }"></div>
+    <div
+      ref="chartRef"
+      :style="{ width: '100%', maxWidth: CHART_MAX_WIDTH, height: CHART_HEIGHT }"
+    />
 
     <div :style="{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', maxWidth: CHART_MAX_WIDTH }">
-      <IxIcon :name="ICON_DRAG_AND_DROP" size="16" />
-      <IxTypography format="body">{{ CHART_LABEL }}</IxTypography>
+      <IxIcon
+        :name="ICON_DRAG_AND_DROP"
+        size="16"
+      />
+      <IxTypography format="body">
+        {{ CHART_LABEL }}
+      </IxTypography>
     </div>
   </div>
 </template>
