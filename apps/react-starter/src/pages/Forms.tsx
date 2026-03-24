@@ -74,9 +74,13 @@ function Forms() {
           <IxRadio value="offline" label="Offline sampling" />
         </IxRadioGroup>
 
-        <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', justifyContent: 'flex-end' }}>
-          <IxButton variant="secondary" onClick={handleCancel}>Cancel</IxButton>
-          <IxButton variant="primary" onClick={handleSave}>Save</IxButton>
+        <div style={{ display: 'flex', columnGap: '1rem', marginTop: '0.5rem', justifyContent: 'flex-end' }}>
+          <IxButton variant="secondary" onClick={handleCancel}>
+            {'Cancel'}
+          </IxButton>
+          <IxButton variant="primary" onClick={handleSave}>
+            {'Save'}
+          </IxButton>
         </div>
 
       </div>

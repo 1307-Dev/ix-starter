@@ -3,6 +3,10 @@ import tseslint from 'typescript-eslint';
 import angular from '@angular-eslint/eslint-plugin';
 import angularTemplate from '@angular-eslint/eslint-plugin-template';
 import templateParser from '@angular-eslint/template-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
   {
@@ -11,6 +15,12 @@ export default tseslint.config(
   {
     files: ['**/*.ts'],
     extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
     plugins: {
       '@angular-eslint': angular,
     },

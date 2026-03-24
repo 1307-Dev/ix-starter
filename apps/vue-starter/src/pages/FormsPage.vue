@@ -53,7 +53,7 @@ function handleCancel() {
       <IxSelect
         label="Inspection Type"
         helper-text="Choose the inspection to perform"
-        @valueChange="inspectionType = $event.detail"
+        @valueChange="inspectionType = String($event.detail)"
       >
         <IxSelectItem value="visual" label="Visual Inspection" />
         <IxSelectItem value="dimensional" label="Dimensional Check" />
@@ -64,7 +64,7 @@ function handleCancel() {
       <IxDateInput
         label="Inspection Date"
         helper-text="Schedule the inspection"
-        @valueChange="inspectionDate = $event.detail"
+        @valueChange="inspectionDate = $event.detail ?? ''"
       />
 
       <IxRadioGroup

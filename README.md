@@ -35,7 +35,7 @@ pnpm dev:angular
 ## Project Structure
 
 ```
-ix-mcp-starter/
+ix-starter/
 ├── apps/
 │   ├── react-starter/      # Vite + React 18 + TypeScript
 │   ├── vue-starter/        # Vite + Vue 3.5 + TypeScript

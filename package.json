@@ -1,5 +1,5 @@
 {
-  "name": "ix-mcp-starter",
+  "name": "ix-starter",
   "private": true,
   "version": "1.0.0",
   "packageManager": "pnpm@9.15.0",
