@@ -39,7 +39,7 @@ ix-starter/
 ├── apps/
 │   ├── react-starter/      # Vite + React 18 + TypeScript
 │   ├── vue-starter/        # Vite + Vue 3.5 + TypeScript
-│   └── angular-starter/    # Angular 19 + standalone components
+│   └── angular-starter/    # Angular 20 + standalone components
 ├── packages/
 │   └── shared/             # Shared utilities and types
 ├── package.json            # Root workspace scripts
@@ -51,7 +51,7 @@ ix-starter/
 ### React Starter
 | Port | Build Tool | Framework |
 |------|------------|-----------|
-| 5173 | Vite 5.4   | React 18  |
+| 3000 | Vite 5.4   | React 18  |
 
 ```bash
 cd apps/react-starter
@@ -71,7 +71,7 @@ pnpm dev
 ### Angular Starter
 | Port | Build Tool | Framework  |
 |------|------------|------------|
-| 4200 | Angular CLI| Angular 19 |
+| 4200 | Angular CLI| Angular 20 |
 
 ```bash
 cd apps/angular-starter
@@ -102,19 +102,20 @@ pnpm dev
 
 ## Theme Switching
 
-All apps implement theme switching via the `themeSwitcher` API:
+All apps include built-in theme toggling via the iX menu:
+
+```html
+<IxMenu enable-toggle-theme>
+  <!-- menu items -->
+</IxMenu>
+```
+
+For programmatic theme control:
 
 ```typescript
 import { themeSwitcher } from '@siemens/ix';
 
-// Listen to theme changes
-themeSwitcher.themeChanged.on((newTheme: string) => {
-  document.body.classList.remove('theme-classic-light', 'theme-classic-dark');
-  document.body.classList.add(newTheme);
-});
-
-// Set initial theme
-themeSwitcher.setTheme('theme-classic-light');
+themeSwitcher.setTheme('theme-classic-dark');
 ```
 
 ## Documentation
