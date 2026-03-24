@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "dev:react": "pnpm --filter ix-react-starter dev",
-    "dev:angular": "pnpm --filter ix-angular-starter dev",
-    "dev:vue": "pnpm --filter ix-vue-starter dev",
+    "dev:react": "pnpm --filter @ix-starter/shared build && pnpm --filter ix-react-starter dev",
+    "dev:angular": "pnpm --filter @ix-starter/shared build && pnpm --filter ix-angular-starter dev",
+    "dev:vue": "pnpm --filter @ix-starter/shared build && pnpm --filter ix-vue-starter dev",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
