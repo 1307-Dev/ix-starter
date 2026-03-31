@@ -4,7 +4,7 @@ import {
   IxApplicationHeader,
   IxMenu,
   IxMenuItem,
-  IxContent
+  IxContent,
 } from '@siemens/ix-react';
 import { NAV_ITEMS } from '@ix-starter/shared';
 

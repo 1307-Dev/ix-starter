@@ -1,5 +1,3 @@
-
-
 import { useState } from 'react';
 import {
   IxInput,
@@ -33,12 +31,22 @@ function Forms() {
   return (
     <div style={{ padding: PAGE_PADDING }}>
       <IxTypography format="h1">Forms</IxTypography>
-      <IxTypography format="body" style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}>
-        Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
+      <IxTypography
+        format="body"
+        style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}
+      >
+        Siemens Industrial Experience provides consistent form elements for collecting and
+        validating user input.
       </IxTypography>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }}>
-
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          maxWidth: FORM_MAX_WIDTH,
+        }}
+      >
         <IxInput
           label="Inspector Name"
           placeholder="Jane Doe"
@@ -74,7 +82,14 @@ function Forms() {
           <IxRadio value="offline" label="Offline sampling" />
         </IxRadioGroup>
 
-        <div style={{ display: 'flex', columnGap: '1rem', marginTop: '0.5rem', justifyContent: 'flex-end' }}>
+        <div
+          style={{
+            display: 'flex',
+            columnGap: '1rem',
+            marginTop: '0.5rem',
+            justifyContent: 'flex-end',
+          }}
+        >
           <IxButton variant="secondary" onClick={handleCancel}>
             {'Cancel'}
           </IxButton>
@@ -82,11 +97,9 @@ function Forms() {
             {'Save'}
           </IxButton>
         </div>
-
       </div>
     </div>
   );
 }
 
 export default Forms;
-

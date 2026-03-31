@@ -30,7 +30,8 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
     <div class="forms-page" [style.padding]="PAGE_PADDING">
       <ix-typography format="h1">Forms</ix-typography>
       <ix-typography format="body" class="description">
-        Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
+        Siemens Industrial Experience provides consistent form elements for collecting and
+        validating user input.
       </ix-typography>
 
       <div class="form-container" [style.max-width]="FORM_MAX_WIDTH">
@@ -76,24 +77,26 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
       </div>
     </div>
   `,
-  styles: [`
-    .description {
-      display: block;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .form-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .button-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
-      justify-content: flex-end;
-    }
-  `],
+  styles: [
+    `
+      .description {
+        display: block;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .button-row {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+    `,
+  ],
 })
 export class FormsComponent {
   PAGE_PADDING = PAGE_PADDING;

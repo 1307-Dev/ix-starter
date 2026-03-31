@@ -34,10 +34,7 @@ import { initializeTheme, NAV_ITEMS } from '@ix-starter/shared';
       <ix-menu enableToggleTheme>
         @for (item of navItems; track item.path) {
           <a [routerLink]="item.path === '/' ? '' : item.path.slice(1)">
-            <ix-menu-item
-              [attr.icon]="item.icon"
-              [class.active]="isActiveRoute(item.path)"
-            >
+            <ix-menu-item [attr.icon]="item.icon" [class.active]="isActiveRoute(item.path)">
               {{ item.label }}
             </ix-menu-item>
           </a>
@@ -49,9 +46,14 @@ import { initializeTheme, NAV_ITEMS } from '@ix-starter/shared';
       </ix-content>
     </ix-application>
   `,
-  styles: [`
-    :host { display: block; height: 100%; }
-  `],
+  styles: [
+    `
+      :host {
+        display: block;
+        height: 100%;
+      }
+    `,
+  ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   navItems = NAV_ITEMS;

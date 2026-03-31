@@ -19,6 +19,4 @@ echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasR
 registerTheme(echarts);
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-bootstrapApplication(AppComponent, appConfig).catch((err) =>
-  console.error(err)
-);
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));

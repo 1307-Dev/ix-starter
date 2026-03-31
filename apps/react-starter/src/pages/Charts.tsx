@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef } from 'react';
 import { IxIcon, IxTypography } from '@siemens/ix-react';
 import { themeSwitcher } from '@siemens/ix';
@@ -61,22 +59,42 @@ function Charts() {
   return (
     <div style={{ padding: PAGE_PADDING }}>
       <IxTypography format="h1">Charts</IxTypography>
-      <IxTypography format="body" style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}>
+      <IxTypography
+        format="body"
+        style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}
+      >
         Siemens Industrial Experience provides an{' '}
-        <a href={URL_ECHARTS} target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>
+        <a
+          href={URL_ECHARTS}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: 'underline' }}
+        >
           ECharts
         </a>{' '}
-        theme. This lets you use different chart types in the Siemens Industrial Experience design system.
+        theme. This lets you use different chart types in the Siemens Industrial Experience design
+        system.
       </IxTypography>
 
-      <IxTypography format="h2" style={{ marginBottom: '1rem' }}>{CHART_SECTION_TITLE}</IxTypography>
+      <IxTypography format="h2" style={{ marginBottom: '1rem' }}>
+        {CHART_SECTION_TITLE}
+      </IxTypography>
 
       <div
         ref={chartRef}
         style={{ width: '100%', maxWidth: CHART_MAX_WIDTH, height: CHART_HEIGHT }}
       />
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', maxWidth: CHART_MAX_WIDTH }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          marginTop: '1rem',
+          maxWidth: CHART_MAX_WIDTH,
+        }}
+      >
         <IxIcon name={ICON_DRAG_AND_DROP} size="16" />
         <IxTypography format="body">{CHART_LABEL}</IxTypography>
       </div>

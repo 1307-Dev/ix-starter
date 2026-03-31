@@ -36,17 +36,15 @@ function handleCancel() {
 
 <template>
   <div :style="{ padding: PAGE_PADDING }">
-    <IxTypography format="h1">
-      Forms
-    </IxTypography>
-    <IxTypography
-      format="body"
-      style="display: block; margin-top: 0.5rem; margin-bottom: 2rem"
-    >
-      Siemens Industrial Experience provides consistent form elements for collecting and validating user input.
+    <IxTypography format="h1"> Forms </IxTypography>
+    <IxTypography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
+      Siemens Industrial Experience provides consistent form elements for collecting and validating
+      user input.
     </IxTypography>
 
-    <div :style="{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }">
+    <div
+      :style="{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }"
+    >
       <IxInput
         label="Inspector Name"
         placeholder="Jane Doe"
@@ -60,22 +58,10 @@ function handleCancel() {
         helper-text="Choose the inspection to perform"
         @value-change="inspectionType = String($event.detail)"
       >
-        <IxSelectItem
-          value="visual"
-          label="Visual Inspection"
-        />
-        <IxSelectItem
-          value="dimensional"
-          label="Dimensional Check"
-        />
-        <IxSelectItem
-          value="functional"
-          label="Functional Test"
-        />
-        <IxSelectItem
-          value="pressure"
-          label="Pressure Test"
-        />
+        <IxSelectItem value="visual" label="Visual Inspection" />
+        <IxSelectItem value="dimensional" label="Dimensional Check" />
+        <IxSelectItem value="functional" label="Functional Test" />
+        <IxSelectItem value="pressure" label="Pressure Test" />
       </IxSelect>
 
       <IxDateInput
@@ -90,29 +76,13 @@ function handleCancel() {
         :value="inspectionMode"
         @value-change="inspectionMode = $event.detail"
       >
-        <IxRadio
-          value="inline"
-          label="In-line inspection"
-        />
-        <IxRadio
-          value="offline"
-          label="Offline sampling"
-        />
+        <IxRadio value="inline" label="In-line inspection" />
+        <IxRadio value="offline" label="Offline sampling" />
       </IxRadioGroup>
 
       <div style="display: flex; gap: 1rem; margin-top: 0.5rem; justify-content: flex-end">
-        <IxButton
-          variant="secondary"
-          @click="handleCancel"
-        >
-          Cancel
-        </IxButton>
-        <IxButton
-          variant="primary"
-          @click="handleSave"
-        >
-          Save
-        </IxButton>
+        <IxButton variant="secondary" @click="handleCancel"> Cancel </IxButton>
+        <IxButton variant="primary" @click="handleSave"> Save </IxButton>
       </div>
     </div>
   </div>

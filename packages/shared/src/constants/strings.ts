@@ -11,9 +11,11 @@ export const PAGE_GRIDS = 'Grids';
 
 export const CHART_SECTION_TITLE = 'Motor Vibration Analysis';
 export const CHART_LABEL = 'Pump A-102';
-export const CHART_DESCRIPTION = 'Siemens Industrial Experience provides an ECharts theme. This lets you use different chart types in the Siemens Industrial Experience design system.';
+export const CHART_DESCRIPTION =
+  'Siemens Industrial Experience provides an ECharts theme. This lets you use different chart types in the Siemens Industrial Experience design system.';
 
-export const GRID_DESCRIPTION = 'Siemens Industrial Experience provides an AG Grid theme. Use powerful data grids with iX styling.';
+export const GRID_DESCRIPTION =
+  'Siemens Industrial Experience provides an AG Grid theme. Use powerful data grids with iX styling.';
 
 export const FORM_SECTION_TITLE = 'Equipment Inspection Form';
 

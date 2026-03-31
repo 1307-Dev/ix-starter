@@ -24,15 +24,19 @@ import {
       <ix-typography format="h1">Charts</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
-        <a [href]="urlEcharts" target="_blank" rel="noreferrer">
-          ECharts
-        </a>
-        theme. This lets you use different chart types in the Siemens Industrial Experience design system.
+        <a [href]="urlEcharts" target="_blank" rel="noreferrer"> ECharts </a>
+        theme. This lets you use different chart types in the Siemens Industrial Experience design
+        system.
       </ix-typography>
 
       <ix-typography format="h2" class="chart-title">{{ chartSectionTitle }}</ix-typography>
 
-      <div #chartContainer [style.width]="'100%'" [style.max-width]="CHART_MAX_WIDTH" [style.height]="CHART_HEIGHT"></div>
+      <div
+        #chartContainer
+        [style.width]="'100%'"
+        [style.max-width]="CHART_MAX_WIDTH"
+        [style.height]="CHART_HEIGHT"
+      ></div>
 
       <div class="chart-label" [style.max-width]="CHART_MAX_WIDTH">
         <ix-icon name="drag-and-drop" size="16"></ix-icon>
@@ -40,26 +44,28 @@ import {
       </div>
     </div>
   `,
-  styles: [`
-    .description {
-      display: block;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .description a {
-      text-decoration: underline;
-    }
-    .chart-title {
-      margin-bottom: 1rem;
-    }
-    .chart-label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-  `],
+  styles: [
+    `
+      .description {
+        display: block;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .description a {
+        text-decoration: underline;
+      }
+      .chart-title {
+        margin-bottom: 1rem;
+      }
+      .chart-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+    `,
+  ],
 })
 export class ChartsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('chartContainer') chartContainer!: ElementRef<HTMLDivElement>;
@@ -77,7 +83,10 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   private themeChangeHandler = (newTheme: string) => {
     this.chartInstance?.dispose();
     if (!this.chartContainer?.nativeElement) return;
-    this.chartInstance = echarts.init(this.chartContainer.nativeElement, convertThemeName(newTheme));
+    this.chartInstance = echarts.init(
+      this.chartContainer.nativeElement,
+      convertThemeName(newTheme)
+    );
     this.chartInstance.setOption(buildChartOptions());
   };
 
@@ -90,7 +99,7 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
       const theme = convertThemeName(themeSwitcher.getCurrentTheme());
       this.chartInstance = echarts.init(this.chartContainer.nativeElement, theme);
       this.chartInstance.setOption(buildChartOptions());
-      
+
       themeSwitcher.themeChanged.on(this.themeChangeHandler);
       window.addEventListener('resize', this.resizeHandler);
     }, this.chartInitDelayMs);

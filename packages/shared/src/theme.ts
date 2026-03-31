@@ -8,7 +8,7 @@ export type ThemeName = 'theme-classic-light' | 'theme-classic-dark';
 /**
  * Initialize theme switching functionality.
  * Sets up a listener on themeSwitcher.themeChanged to update the body class.
- * 
+ *
  * @param initialTheme - The theme to apply initially (default: 'theme-classic-light')
  * @returns Cleanup function to remove the listener
  */

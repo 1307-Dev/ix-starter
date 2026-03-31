@@ -8,17 +8,22 @@ const router = useRouter();
 
 <template>
   <div :style="{ padding: PAGE_PADDING }">
-    <IxTypography format="h1">
-      Get Started with Siemens Industrial Experience
-    </IxTypography>
-    <IxTypography
-      format="body"
-      style="display: block; margin-top: 1rem; margin-bottom: 1.5rem"
-    >
-      The starter app includes an application shell and three example pages with commonly used components.
+    <IxTypography format="h1"> Get Started with Siemens Industrial Experience </IxTypography>
+    <IxTypography format="body" style="display: block; margin-top: 1rem; margin-bottom: 1.5rem">
+      The starter app includes an application shell and three example pages with commonly used
+      components.
     </IxTypography>
 
-    <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-direction: column; gap: 0.5rem">
+    <ul
+      style="
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      "
+    >
       <li>
         <a
           href="/forms"
@@ -48,18 +53,9 @@ const router = useRouter();
       </li>
     </ul>
 
-    <IxTypography
-      format="body"
-      style="display: block"
-    >
+    <IxTypography format="body" style="display: block">
       Browse the full component library at
-      <a
-        :href="URL_IX_DOCS"
-        target="_blank"
-        rel="noreferrer"
-      >
-        ix.siemens.io
-      </a>
+      <a :href="URL_IX_DOCS" target="_blank" rel="noreferrer"> ix.siemens.io </a>
     </IxTypography>
   </div>
 </template>

@@ -19,11 +19,10 @@ import {
       <ix-typography format="h1">Grids</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience integrates the data grid library
-        <a [href]="urlAgGrid" target="_blank" rel="noreferrer">
-          AG Grid
-        </a>.
+        <a [href]="urlAgGrid" target="_blank" rel="noreferrer"> AG Grid </a>.
         <br />
-        This lets you use its features while staying consistent with the Siemens Industrial Experience design system.
+        This lets you use its features while staying consistent with the Siemens Industrial
+        Experience design system.
       </ix-typography>
 
       <div class="ag-theme-alpine ix-ag-grid">
@@ -37,16 +36,18 @@ import {
       </div>
     </div>
   `,
-  styles: [`
-    .description {
-      display: block;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .description a {
-      text-decoration: underline;
-    }
-  `],
+  styles: [
+    `
+      .description {
+        display: block;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .description a {
+        text-decoration: underline;
+      }
+    `,
+  ],
 })
 export class GridsComponent {
   protected readonly urlAgGrid = URL_AG_GRID;
