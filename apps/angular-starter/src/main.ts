@@ -7,7 +7,7 @@ import { registerTheme } from '@siemens/ix-echarts';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import { defineCustomElements } from '@siemens/ix/loader';
 import { defineCustomElements as defineIxIconsCustomElements } from '@siemens/ix-icons/loader';
-import { initializeIcons } from '@ix-starter/shared';
+import { initializeIcons, initializeTheme } from '@ix-starter/shared';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
@@ -18,5 +18,6 @@ initializeIcons();
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
 registerTheme(echarts);
 ModuleRegistry.registerModules([AllCommunityModule]);
+initializeTheme('classic', 'dark');
 
 bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));

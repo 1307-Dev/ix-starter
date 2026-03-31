@@ -63,7 +63,7 @@ importers:
         specifier: ^33.0.0
         version: 33.3.2
       echarts:
-        specifier: ^5.5.0
+        specifier: ^5.4.1
         version: 5.6.0
       rxjs:
         specifier: ^7.8.1

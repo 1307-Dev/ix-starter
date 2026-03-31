@@ -3,27 +3,26 @@ import { themeSwitcher } from '@siemens/ix';
 /**
  * Available theme names
  */
-export type ThemeName = 'theme-classic-light' | 'theme-classic-dark';
+export type ThemeName = 'classic';
+
+/**
+ * Available color schemes
+ */
+export type ColorScheme = 'light' | 'dark';
 
 /**
  * Initialize theme switching functionality.
- * Sets up a listener on themeSwitcher.themeChanged to update the body class.
+ * Uses data-ix-theme and data-ix-color-schema attributes (recommended by iX docs).
+ * The initial theme is set via HTML attributes; this syncs the themeSwitcher.
  *
- * @param initialTheme - The theme to apply initially (default: 'theme-classic-light')
- * @returns Cleanup function to remove the listener
+ * @param theme - The theme to apply (default: 'classic')
+ * @param colorScheme - The color scheme (default: 'light')
  */
-export function initializeTheme(initialTheme: ThemeName = 'theme-classic-light'): () => void {
-  const handleThemeChange = (newTheme: string) => {
-    document.body.classList.remove('theme-classic-light', 'theme-classic-dark');
-    document.body.classList.add(newTheme);
-  };
-
-  themeSwitcher.themeChanged.on(handleThemeChange);
-  themeSwitcher.setTheme(initialTheme);
-
-  return () => {
-    themeSwitcher.themeChanged.off(handleThemeChange);
-  };
+export function initializeTheme(
+  theme: ThemeName = 'classic',
+  colorScheme: ColorScheme = 'light',
+): void {
+  themeSwitcher.setTheme(`theme-${theme}-${colorScheme}`);
 }
 
 /**
@@ -43,6 +42,6 @@ export function getCurrentTheme(): string {
 /**
  * Set a specific theme
  */
-export function setTheme(theme: ThemeName): void {
-  themeSwitcher.setTheme(theme);
+export function setTheme(theme: ThemeName, colorScheme: ColorScheme = 'light'): void {
+  themeSwitcher.setTheme(`theme-${theme}-${colorScheme}`);
 }

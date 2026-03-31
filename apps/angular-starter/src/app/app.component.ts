@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
@@ -8,7 +8,7 @@ import {
   IxMenuItem,
   IxContent,
 } from '@siemens/ix-angular/standalone';
-import { initializeTheme, NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '@ix-starter/shared';
+import { NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '@ix-starter/shared';
 
 @Component({
   selector: 'app-root',
@@ -55,11 +55,10 @@ import { initializeTheme, NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '@ix-starter/
     `,
   ],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   navItems = NAV_ITEMS;
   APP_TITLE = APP_TITLE;
   LOGO_HEIGHT = LOGO_HEIGHT;
-  private cleanupTheme: (() => void) | null = null;
 
   constructor(private router: Router) {}
 
@@ -68,13 +67,5 @@ export class AppComponent implements OnInit, OnDestroy {
       return this.router.url === '/' || this.router.url === '';
     }
     return this.router.url === path || this.router.url.startsWith(path + '/');
-  }
-
-  ngOnInit() {
-    this.cleanupTheme = initializeTheme('theme-classic-light');
-  }
-
-  ngOnDestroy() {
-    this.cleanupTheme?.();
   }
 }

@@ -47,6 +47,6 @@ app.config.errorHandler = (err, instance, info) => {
 
 app.use(router);
 
-initializeTheme('theme-classic-light');
+initializeTheme('classic', 'dark');
 
 app.mount('#app');

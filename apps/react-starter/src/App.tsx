@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import {
   IxApplication,
@@ -7,7 +6,7 @@ import {
   IxMenuItem,
   IxContent,
 } from '@siemens/ix-react';
-import { APP_TITLE, NAV_ITEMS, LOGO_STYLE, initializeTheme } from '@ix-starter/shared';
+import { APP_TITLE, NAV_ITEMS, LOGO_STYLE } from '@ix-starter/shared';
 
 import GetStarted from './pages/GetStarted';
 import Forms from './pages/Forms';
@@ -21,11 +20,6 @@ function App() {
   const location = useLocation();
 
   const isActive = (path: string): boolean => location.pathname === path;
-
-  useEffect(() => {
-    const cleanup = initializeTheme('theme-classic-light');
-    return cleanup;
-  }, []);
 
   return (
     <IxApplication>
