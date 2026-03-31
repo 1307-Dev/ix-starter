@@ -13,6 +13,7 @@ import {
   CHART_HEIGHT,
   CHART_INIT_DELAY_MS,
   PAGE_PADDING,
+  PAGE_CHARTS,
 } from '@ix-starter/shared';
 
 @Component({
@@ -21,7 +22,7 @@ import {
   imports: [IxTypography, IxIcon],
   template: `
     <div class="charts-page" [style.padding]="PAGE_PADDING">
-      <ix-typography format="h1">Charts</ix-typography>
+      <ix-typography format="h1">{{ PAGE_CHARTS }}</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
         <a [href]="urlEcharts" target="_blank" rel="noreferrer"> ECharts </a>
@@ -39,7 +40,7 @@ import {
       ></div>
 
       <div class="chart-label" [style.max-width]="CHART_MAX_WIDTH">
-        <ix-icon name="drag-and-drop" size="16"></ix-icon>
+        <ix-icon [attr.name]="iconDragAndDrop" size="16"></ix-icon>
         <ix-typography format="body">{{ chartLabel }}</ix-typography>
       </div>
     </div>
@@ -71,6 +72,7 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('chartContainer') chartContainer!: ElementRef<HTMLDivElement>;
   private chartInstance: echarts.ECharts | null = null;
 
+  protected readonly PAGE_CHARTS = PAGE_CHARTS;
   protected readonly urlEcharts = URL_ECHARTS;
   protected readonly chartSectionTitle = CHART_SECTION_TITLE;
   protected readonly chartLabel = CHART_LABEL;

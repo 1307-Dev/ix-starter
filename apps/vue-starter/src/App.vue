@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router';
 import { IxApplication, IxApplicationHeader, IxMenu, IxMenuItem, IxContent } from '@siemens/ix-vue';
-import { NAV_ITEMS } from '@ix-starter/shared';
+import { NAV_ITEMS, APP_TITLE, LOGO_STYLE } from '@ix-starter/shared';
 import logo from './assets/logo.png';
 
 const router = useRouter();
@@ -10,9 +10,9 @@ const route = useRoute();
 
 <template>
   <IxApplication>
-    <IxApplicationHeader name="Siemens Industrial Experience Starter App">
+    <IxApplicationHeader :name="APP_TITLE">
       <div slot="logo">
-        <img :src="logo" alt="Siemens" style="height: 40px" />
+        <img :src="logo" alt="Siemens" :style="LOGO_STYLE" />
       </div>
     </IxApplicationHeader>
 

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import {
   IxApplication,
@@ -6,7 +7,7 @@ import {
   IxMenuItem,
   IxContent,
 } from '@siemens/ix-react';
-import { NAV_ITEMS } from '@ix-starter/shared';
+import { APP_TITLE, NAV_ITEMS, LOGO_STYLE, initializeTheme } from '@ix-starter/shared';
 
 import GetStarted from './pages/GetStarted';
 import Forms from './pages/Forms';
@@ -21,11 +22,16 @@ function App() {
 
   const isActive = (path: string): boolean => location.pathname === path;
 
+  useEffect(() => {
+    const cleanup = initializeTheme('theme-classic-light');
+    return cleanup;
+  }, []);
+
   return (
     <IxApplication>
-      <IxApplicationHeader name="Siemens Industrial Experience Starter App">
+      <IxApplicationHeader name={APP_TITLE}>
         <div slot="logo">
-          <img src={logo} alt="Siemens" style={{ height: '40px' }} />
+          <img src={logo} alt="Siemens" style={LOGO_STYLE} />
         </div>
       </IxApplicationHeader>
 

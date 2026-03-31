@@ -9,7 +9,17 @@ import {
   IxButton,
   IxTypography,
 } from '@siemens/ix-react';
-import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
+import {
+  PAGE_PADDING,
+  FORM_MAX_WIDTH,
+  SECTION_MARGIN_TOP,
+  SECTION_MARGIN_BOTTOM,
+  LABEL_INSPECTOR_NAME,
+  LABEL_INSPECTION_TYPE,
+  LABEL_INSPECTION_DATE,
+  INSPECTION_TYPES,
+  PAGE_FORMS,
+} from '@ix-starter/shared';
 
 function Forms() {
   const [inspectorName, setInspectorName] = useState('');
@@ -30,10 +40,10 @@ function Forms() {
 
   return (
     <div style={{ padding: PAGE_PADDING }}>
-      <IxTypography format="h1">Forms</IxTypography>
+      <IxTypography format="h1">{PAGE_FORMS}</IxTypography>
       <IxTypography
         format="body"
-        style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}
+        style={{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }}
       >
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
@@ -48,7 +58,7 @@ function Forms() {
         }}
       >
         <IxInput
-          label="Inspector Name"
+          label={LABEL_INSPECTOR_NAME}
           placeholder="Jane Doe"
           helperText="Enter the certified inspector's full name"
           value={inspectorName}
@@ -56,18 +66,17 @@ function Forms() {
         />
 
         <IxSelect
-          label="Inspection Type"
+          label={LABEL_INSPECTION_TYPE}
           helperText="Choose the inspection to perform"
           onValueChange={(e) => setInspectionType(e.detail as string)}
         >
-          <IxSelectItem value="visual" label="Visual Inspection" />
-          <IxSelectItem value="dimensional" label="Dimensional Check" />
-          <IxSelectItem value="functional" label="Functional Test" />
-          <IxSelectItem value="pressure" label="Pressure Test" />
+          {INSPECTION_TYPES.map((type) => (
+            <IxSelectItem key={type} value={type} label={type} />
+          ))}
         </IxSelect>
 
         <IxDateInput
-          label="Inspection Date"
+          label={LABEL_INSPECTION_DATE}
           helperText="Schedule the inspection"
           onValueChange={(e) => setInspectionDate(e.detail as string)}
         />

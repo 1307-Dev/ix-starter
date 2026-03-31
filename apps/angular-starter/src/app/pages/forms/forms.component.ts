@@ -10,7 +10,15 @@ import {
   IxRadio,
   IxButton,
 } from '@siemens/ix-angular/standalone';
-import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
+import {
+  PAGE_PADDING,
+  FORM_MAX_WIDTH,
+  LABEL_INSPECTOR_NAME,
+  LABEL_INSPECTION_TYPE,
+  LABEL_INSPECTION_DATE,
+  INSPECTION_TYPES,
+  PAGE_FORMS,
+} from '@ix-starter/shared';
 
 @Component({
   selector: 'app-forms-page',
@@ -28,7 +36,7 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
   ],
   template: `
     <div class="forms-page" [style.padding]="PAGE_PADDING">
-      <ix-typography format="h1">Forms</ix-typography>
+      <ix-typography format="h1">{{ PAGE_FORMS }}</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
@@ -36,7 +44,7 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
 
       <div class="form-container" [style.max-width]="FORM_MAX_WIDTH">
         <ix-input
-          label="Inspector Name"
+          [attr.label]="LABEL_INSPECTOR_NAME"
           placeholder="Jane Doe"
           helperText="Enter the certified inspector's full name"
           [value]="inspectorName"
@@ -44,18 +52,17 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
         ></ix-input>
 
         <ix-select
-          label="Inspection Type"
+          [attr.label]="LABEL_INSPECTION_TYPE"
           helperText="Choose the inspection to perform"
           (valueChange)="onInspectionTypeChange($event)"
         >
-          <ix-select-item value="visual" label="Visual Inspection"></ix-select-item>
-          <ix-select-item value="dimensional" label="Dimensional Check"></ix-select-item>
-          <ix-select-item value="functional" label="Functional Test"></ix-select-item>
-          <ix-select-item value="pressure" label="Pressure Test"></ix-select-item>
+          @for (type of INSPECTION_TYPES; track type) {
+            <ix-select-item [value]="type" [label]="type"></ix-select-item>
+          }
         </ix-select>
 
         <ix-date-input
-          label="Inspection Date"
+          [attr.label]="LABEL_INSPECTION_DATE"
           helperText="Schedule the inspection"
           (valueChange)="onInspectionDateChange($event)"
         ></ix-date-input>
@@ -101,6 +108,11 @@ import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
 export class FormsComponent {
   PAGE_PADDING = PAGE_PADDING;
   FORM_MAX_WIDTH = FORM_MAX_WIDTH;
+  PAGE_FORMS = PAGE_FORMS;
+  LABEL_INSPECTOR_NAME = LABEL_INSPECTOR_NAME;
+  LABEL_INSPECTION_TYPE = LABEL_INSPECTION_TYPE;
+  LABEL_INSPECTION_DATE = LABEL_INSPECTION_DATE;
+  INSPECTION_TYPES = INSPECTION_TYPES;
   inspectorName = '';
   inspectionType = '';
   inspectionDate = '';

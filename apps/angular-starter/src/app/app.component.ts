@@ -8,7 +8,7 @@ import {
   IxMenuItem,
   IxContent,
 } from '@siemens/ix-angular/standalone';
-import { initializeTheme, NAV_ITEMS } from '@ix-starter/shared';
+import { initializeTheme, NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '@ix-starter/shared';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +25,9 @@ import { initializeTheme, NAV_ITEMS } from '@ix-starter/shared';
   ],
   template: `
     <ix-application>
-      <ix-application-header name="Siemens Industrial Experience Starter App">
+      <ix-application-header [attr.name]="APP_TITLE">
         <div slot="logo">
-          <img src="assets/logo.png" alt="Siemens" style="height: 40px" />
+          <img src="assets/logo.png" alt="Siemens" [style.height]="LOGO_HEIGHT" />
         </div>
       </ix-application-header>
 
@@ -57,6 +57,8 @@ import { initializeTheme, NAV_ITEMS } from '@ix-starter/shared';
 })
 export class AppComponent implements OnInit, OnDestroy {
   navItems = NAV_ITEMS;
+  APP_TITLE = APP_TITLE;
+  LOGO_HEIGHT = LOGO_HEIGHT;
   private cleanupTheme: (() => void) | null = null;
 
   constructor(private router: Router) {}

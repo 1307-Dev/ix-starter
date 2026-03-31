@@ -10,7 +10,17 @@ import {
   IxRadio,
   IxButton,
 } from '@siemens/ix-vue';
-import { PAGE_PADDING, FORM_MAX_WIDTH } from '@ix-starter/shared';
+import {
+  PAGE_PADDING,
+  FORM_MAX_WIDTH,
+  SECTION_MARGIN_TOP,
+  SECTION_MARGIN_BOTTOM,
+  LABEL_INSPECTOR_NAME,
+  LABEL_INSPECTION_TYPE,
+  LABEL_INSPECTION_DATE,
+  INSPECTION_TYPES,
+  PAGE_FORMS,
+} from '@ix-starter/shared';
 
 const inspectorName = ref('');
 const inspectionType = ref('');
@@ -36,8 +46,8 @@ function handleCancel() {
 
 <template>
   <div :style="{ padding: PAGE_PADDING }">
-    <IxTypography format="h1"> Forms </IxTypography>
-    <IxTypography format="body" style="display: block; margin-top: 0.5rem; margin-bottom: 2rem">
+    <IxTypography format="h1"> {{ PAGE_FORMS }} </IxTypography>
+    <IxTypography format="body" :style="{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }">
       Siemens Industrial Experience provides consistent form elements for collecting and validating
       user input.
     </IxTypography>
@@ -46,7 +56,7 @@ function handleCancel() {
       :style="{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }"
     >
       <IxInput
-        label="Inspector Name"
+        :label="LABEL_INSPECTOR_NAME"
         placeholder="Jane Doe"
         helper-text="Enter the certified inspector's full name"
         :value="inspectorName"
@@ -54,18 +64,15 @@ function handleCancel() {
       />
 
       <IxSelect
-        label="Inspection Type"
+        :label="LABEL_INSPECTION_TYPE"
         helper-text="Choose the inspection to perform"
         @value-change="inspectionType = String($event.detail)"
       >
-        <IxSelectItem value="visual" label="Visual Inspection" />
-        <IxSelectItem value="dimensional" label="Dimensional Check" />
-        <IxSelectItem value="functional" label="Functional Test" />
-        <IxSelectItem value="pressure" label="Pressure Test" />
+        <IxSelectItem v-for="type in INSPECTION_TYPES" :key="type" :value="type" :label="type" />
       </IxSelect>
 
       <IxDateInput
-        label="Inspection Date"
+        :label="LABEL_INSPECTION_DATE"
         helper-text="Schedule the inspection"
         @value-change="inspectionDate = $event.detail ?? ''"
       />

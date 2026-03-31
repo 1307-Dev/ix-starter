@@ -12,6 +12,9 @@ import {
   CHART_LABEL,
   ICON_DRAG_AND_DROP,
   PAGE_PADDING,
+  PAGE_CHARTS,
+  SECTION_MARGIN_TOP,
+  SECTION_MARGIN_BOTTOM,
 } from '@ix-starter/shared';
 
 function Charts() {
@@ -58,10 +61,10 @@ function Charts() {
 
   return (
     <div style={{ padding: PAGE_PADDING }}>
-      <IxTypography format="h1">Charts</IxTypography>
+      <IxTypography format="h1">{PAGE_CHARTS}</IxTypography>
       <IxTypography
         format="body"
-        style={{ display: 'block', marginTop: '0.5rem', marginBottom: '2rem' }}
+        style={{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }}
       >
         Siemens Industrial Experience provides an{' '}
         <a

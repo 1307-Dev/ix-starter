@@ -9,7 +9,7 @@ import { registerTheme } from '@siemens/ix-echarts';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { initializeTheme, initializeIcons } from '@ix-starter/shared';
+import { initializeIcons } from '@ix-starter/shared';
 
 import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
 import '@siemens/ix/dist/siemens-ix/theme/classic-dark.css';
@@ -19,7 +19,6 @@ initializeIcons();
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
 registerTheme(echarts);
 ModuleRegistry.registerModules([AllCommunityModule]);
-initializeTheme('theme-classic-light');
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

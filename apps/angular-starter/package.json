@@ -26,7 +26,7 @@
     "@siemens/ix-aggrid": "^4.0.1",
     "ag-grid-angular": "^33.0.0",
     "ag-grid-community": "^33.0.0",
-    "echarts": "^5.5.0",
+    "echarts": "^5.4.1",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.0",
     "zone.js": "~0.15.0"
