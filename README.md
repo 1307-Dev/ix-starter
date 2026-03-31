@@ -1,6 +1,6 @@
 # Siemens iX Starter Apps
 
-A monorepo containing starter applications for **React**, **Vue**, and **Angular** using the [Siemens Industrial Experience (iX)](https://ix.siemens.io/) design system.
+Three independent starter applications for **React**, **Vue**, and **Angular** using the [Siemens Industrial Experience (iX)](https://ix.siemens.io/) design system. Each app is fully self-contained — no monorepo, no shared build steps.
 
 ## Overview
 
@@ -17,37 +17,20 @@ Each starter app includes:
 - [Node.js](https://nodejs.org/) >= 18
 - [pnpm](https://pnpm.io/) >= 8
 
-## Quick Start
-
-```bash
-# Install dependencies
-pnpm install
-
-# Run React starter
-pnpm dev:react
-
-# Run Vue starter
-pnpm dev:vue
-
-# Run Angular starter
-pnpm dev:angular
-```
-
 ## Project Structure
 
 ```
 ix-starter/
-├── apps/
-│   ├── react-starter/      # Vite + React 18 + TypeScript
-│   ├── vue-starter/        # Vite + Vue 3.5 + TypeScript
-│   └── angular-starter/    # Angular 20 + standalone components
-├── packages/
-│   └── shared/             # Shared utilities and types
-├── package.json            # Root workspace scripts
-└── pnpm-workspace.yaml     # pnpm workspace configuration
+├── react-starter/      # Vite + React 18 + TypeScript
+├── vue-starter/        # Vite + Vue 3.5 + TypeScript
+└── angular-starter/    # Angular CLI + Angular 20
 ```
 
-## Apps
+Each app has its own `package.json`, `node_modules`, and `src/shared/` folder containing the shared utilities.
+
+## Quick Start
+
+Pick the framework you want and run it independently:
 
 ### React Starter
 
@@ -56,7 +39,8 @@ ix-starter/
 | 3000 | Vite 5.4   | React 18  |
 
 ```bash
-cd apps/react-starter
+cd react-starter
+pnpm i
 pnpm dev
 ```
 
@@ -67,7 +51,8 @@ pnpm dev
 | 3200 | Vite 5.4   | Vue 3.5   |
 
 ```bash
-cd apps/vue-starter
+cd vue-starter
+pnpm i
 pnpm dev
 ```
 
@@ -78,9 +63,18 @@ pnpm dev
 | 4200 | Angular CLI | Angular 20 |
 
 ```bash
-cd apps/angular-starter
+cd angular-starter
+pnpm i
 pnpm dev
 ```
+
+## Available Scripts (per app)
+
+| Script       | Description            |
+| ------------ | ---------------------- |
+| `pnpm dev`   | Start dev server       |
+| `pnpm build` | Build for production   |
+| `pnpm lint`  | Lint the app           |
 
 ## Siemens iX Packages
 
@@ -92,17 +86,6 @@ pnpm dev
 | `@siemens/ix-icons`   | 3.2.0   | Icon library     |
 | `@siemens/ix-echarts` | 2.0.0   | ECharts theme    |
 | `@siemens/ix-aggrid`  | 4.0.1   | AG Grid theme    |
-
-## Scripts
-
-| Script             | Description              |
-| ------------------ | ------------------------ |
-| `pnpm dev:react`   | Start React dev server   |
-| `pnpm dev:vue`     | Start Vue dev server     |
-| `pnpm dev:angular` | Start Angular dev server |
-| `pnpm build`       | Build all apps           |
-| `pnpm lint`        | Lint all apps            |
-| `pnpm test`        | Run all tests            |
 
 ## Theme Switching
 
