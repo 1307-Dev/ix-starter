@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
-import { IxTypography, IxIcon } from '@siemens/ix-vue';
+import { IxContentHeader, IxTypography, IxIcon } from '@siemens/ix-vue';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -48,17 +48,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <IxTypography format="h1"> {{ PAGE_CHARTS }} </IxTypography>
-    <IxTypography format="body" class="description">
-      Siemens Industrial Experience provides an
-      <a :href="URL_ECHARTS" target="_blank" rel="noreferrer"> ECharts </a>
-      theme. This lets you use different chart types in the Siemens Industrial Experience design
-      system.
-    </IxTypography>
+  <IxContentHeader :header-title="PAGE_CHARTS" />
+  <IxTypography format="body" class="description">
+    Siemens Industrial Experience provides an
+    <a :href="URL_ECHARTS" target="_blank" rel="noreferrer"> ECharts </a>
+    theme. This lets you use different chart types in the Siemens Industrial Experience design
+    system.
+  </IxTypography>
 
-    <IxTypography format="h2" class="chart-title">
-      {{ CHART_SECTION_TITLE }}
-    </IxTypography>
+  <IxTypography format="h2" class="chart-title">
+    {{ CHART_SECTION_TITLE }}
+  </IxTypography>
 
     <div
       ref="chartRef"
@@ -90,6 +90,7 @@ onUnmounted(() => {
 }
 
 .description a {
+  color: inherit;
   text-decoration: underline;
 }
 

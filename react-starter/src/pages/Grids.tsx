@@ -1,5 +1,7 @@
-import { IxTypography } from '@siemens/ix-react';
+import { IxTypography, IxContentHeader } from '@siemens/ix-react';
 import { AgGridReact } from 'ag-grid-react';
+import * as ag from 'ag-grid-community';
+import { getIxTheme } from '@siemens/ix-aggrid';
 import {
   GRID_ROW_DATA,
   GRID_COL_DEFS,
@@ -8,14 +10,13 @@ import {
   SECTION_MARGIN_TOP,
   SECTION_MARGIN_BOTTOM,
 } from '../shared';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-import '../shared/styles/ag-grid-theme.css';
+
+const ixTheme = getIxTheme(ag);
 
 function Grids() {
   return (
     <>
-      <IxTypography format="h1">{PAGE_GRIDS}</IxTypography>
+      <IxContentHeader headerTitle={PAGE_GRIDS} />
       <IxTypography
         format="body"
         style={{
@@ -29,7 +30,7 @@ function Grids() {
           href={URL_AG_GRID}
           target="_blank"
           rel="noreferrer"
-          style={{ textDecoration: 'underline' }}
+          style={{ color: 'inherit', textDecoration: 'underline' }}
         >
           AG Grid
         </a>
@@ -38,12 +39,12 @@ function Grids() {
         Experience design system.
       </IxTypography>
 
-      <div className="ag-theme-alpine ix-ag-grid">
+      <div>
         <AgGridReact
           rowData={GRID_ROW_DATA}
           columnDefs={GRID_COL_DEFS}
           domLayout="autoHeight"
-          theme="legacy"
+          theme={ixTheme}
         />
       </div>
     </>

@@ -14,7 +14,7 @@ const route = useRoute();
       <div slot="logo">
         <img :src="logo" alt="Siemens" :style="LOGO_STYLE" />
       </div>
-      <IxAvatar username="John Doe" />
+      <IxAvatar initials="JD" />
     </IxApplicationHeader>
 
     <IxMenu enable-toggle-theme>

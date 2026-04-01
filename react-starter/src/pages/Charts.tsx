@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { IxIcon, IxTypography } from '@siemens/ix-react';
+import { IxIcon, IxTypography, IxContentHeader } from '@siemens/ix-react';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -62,7 +62,7 @@ function Charts() {
 
   return (
     <>
-      <IxTypography format="h1">{PAGE_CHARTS}</IxTypography>
+      <IxContentHeader headerTitle={PAGE_CHARTS} />
       <IxTypography
         format="body"
         style={{
@@ -76,7 +76,7 @@ function Charts() {
           href={URL_ECHARTS}
           target="_blank"
           rel="noreferrer"
-          style={{ textDecoration: 'underline' }}
+          style={{ color: 'inherit', textDecoration: 'underline' }}
         >
           ECharts
         </a>{' '}

@@ -1,59 +1,30 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import { IxTypography } from '@siemens/ix-vue';
-import { URL_IX_DOCS } from '../shared';
-
-const router = useRouter();
+import { IxContentHeader, IxTypography, IxLinkButton } from '@siemens/ix-vue';
+import { URL_IX_DOCS, SECTION_MARGIN_TOP } from '../shared';
 </script>
 
 <template>
-  <IxTypography format="h1"> Get Started with Siemens Industrial Experience </IxTypography>
-    <IxTypography format="body" style="display: block; margin-top: 1rem; margin-bottom: 1.5rem">
-      The starter app includes an application shell and three example pages with commonly used
-      components.
-    </IxTypography>
+  <IxContentHeader header-title="Get Started with Siemens Industrial Experience" />
+  <IxTypography format="body" :style="{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: '1.5rem' }">
+    The starter app includes an application shell and three example pages with commonly used
+    components.
+  </IxTypography>
 
-    <ul
-      style="
-        list-style: none;
-        padding: 0;
-        margin: 0 0 2rem 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      "
+  <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem">
+    <IxLinkButton url="/forms">Forms</IxLinkButton>
+    <IxLinkButton url="/charts">Charts</IxLinkButton>
+    <IxLinkButton url="/grids">Grids</IxLinkButton>
+  </div>
+
+  <IxTypography format="body" style="display: block">
+    Browse the full component library at
+    <a
+      :href="URL_IX_DOCS"
+      target="_blank"
+      rel="noreferrer"
+      style="color: inherit; text-decoration: underline"
     >
-      <li>
-        <a
-          href="/forms"
-          style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline"
-          @click.prevent="router.push('/forms')"
-        >
-          &gt; Forms
-        </a>
-      </li>
-      <li>
-        <a
-          href="/charts"
-          style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline"
-          @click.prevent="router.push('/charts')"
-        >
-          &gt; Charts
-        </a>
-      </li>
-      <li>
-        <a
-          href="/grids"
-          style="cursor: pointer; color: var(--theme-color-primary); text-decoration: underline"
-          @click.prevent="router.push('/grids')"
-        >
-          &gt; Grids
-        </a>
-      </li>
-    </ul>
-
-    <IxTypography format="body" style="display: block">
-      Browse the full component library at
-      <a :href="URL_IX_DOCS" target="_blank" rel="noreferrer"> ix.siemens.io </a>
-    </IxTypography>
+      ix.siemens.io
+    </a>
+  </IxTypography>
 </template>

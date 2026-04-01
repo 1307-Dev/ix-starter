@@ -7,17 +7,18 @@ import {
   IxRadioGroup,
   IxRadio,
   IxButton,
+  IxContentHeader,
   IxTypography,
 } from '@siemens/ix-react';
 import {
   FORM_MAX_WIDTH,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
   INSPECTION_TYPES,
   PAGE_FORMS,
+  SECTION_MARGIN_TOP,
+  SECTION_MARGIN_BOTTOM,
 } from '../shared';
 
 function Forms() {
@@ -39,7 +40,7 @@ function Forms() {
 
   return (
     <>
-      <IxTypography format="h1">{PAGE_FORMS}</IxTypography>
+      <IxContentHeader headerTitle={PAGE_FORMS} />
       <IxTypography
         format="body"
         style={{

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
+  IxContentHeader,
   IxTypography,
   IxInput,
   IxSelect,
@@ -24,6 +25,7 @@ import {
   standalone: true,
   imports: [
     FormsModule,
+    IxContentHeader,
     IxTypography,
     IxInput,
     IxSelect,
@@ -35,7 +37,7 @@ import {
   ],
   template: `
     <div class="forms-page">
-      <ix-typography format="h1">{{ PAGE_FORMS }}</ix-typography>
+      <ix-content-header [headerTitle]="PAGE_FORMS"></ix-content-header>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
