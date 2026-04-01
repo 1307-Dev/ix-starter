@@ -9,6 +9,7 @@ import {
   iconTable,
   iconDragAndDrop,
   iconBulb,
+  iconInfo,
 } from '@siemens/ix-icons/icons';
 
 export const ICON_HOME = 'home';
@@ -31,6 +32,7 @@ export function initializeIcons(): void {
     iconTable,
     iconDragAndDrop,
     iconBulb,
+    iconInfo,
   });
 }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { showMessage } from '@siemens/ix';
 import {
   IxTypography,
   IxInput,
@@ -12,6 +13,7 @@ import {
 } from '@siemens/ix-angular/standalone';
 import {
   FORM_MAX_WIDTH,
+  PAGE_PADDING,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
@@ -35,7 +37,7 @@ import {
   ],
   template: `
     <div class="forms-page">
-      <ix-typography format="h1">{{ PAGE_FORMS }}</ix-typography>
+      <ix-typography format="h1" class="page-title">{{ PAGE_FORMS }}</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
@@ -63,12 +65,13 @@ import {
         <ix-date-input
           [attr.label]="LABEL_INSPECTION_DATE"
           helperText="Schedule the inspection"
+          placeholder="DD/MM/YYYY"
           (valueChange)="onInspectionDateChange($event)"
         ></ix-date-input>
 
         <ix-radio-group
           label="Inspection Mode"
-          helperText="Inline inspections take place during production. Offline sampling requires batch removal for lab testing."
+          helperText="In-line inspection takes place during production. Offline sampling requires batch removal for lab testing."
           [value]="inspectionMode"
           (valueChange)="inspectionMode = $event.detail"
         >
@@ -85,10 +88,13 @@ import {
   `,
   styles: [
     `
+      .page-title {
+        display: block;
+        margin-bottom: 1.5rem;
+      }
       .description {
         display: block;
-        margin-top: 0.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
       }
       .form-container {
         display: flex;
@@ -106,6 +112,7 @@ import {
 })
 export class FormsComponent {
   FORM_MAX_WIDTH = FORM_MAX_WIDTH;
+  PAGE_PADDING = PAGE_PADDING;
   PAGE_FORMS = PAGE_FORMS;
   LABEL_INSPECTOR_NAME = LABEL_INSPECTOR_NAME;
   LABEL_INSPECTION_TYPE = LABEL_INSPECTION_TYPE;
@@ -114,7 +121,7 @@ export class FormsComponent {
   inspectorName = '';
   inspectionType = '';
   inspectionDate = '';
-  inspectionMode = '';
+  inspectionMode = 'inline';
 
   onInspectionTypeChange(event: CustomEvent<string | string[]>) {
     const value = event.detail;
@@ -131,6 +138,16 @@ export class FormsComponent {
       inspectionType: this.inspectionType,
       inspectionDate: this.inspectionDate,
       inspectionMode: this.inspectionMode,
+    });
+    showMessage({
+      icon: 'info',
+      messageTitle: 'Time slot unavailable',
+      message: 'Inspections can only be scheduled during operational hours, 06:00–22:00. Select a time within this range.',
+      actions: [
+        { id: 'cancel', type: 'cancel', text: 'Cancel' },
+        { id: 'ok', type: 'okay', text: 'OK' },
+      ],
+      centered: true,
     });
   }
 

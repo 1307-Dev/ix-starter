@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { showMessage } from '@siemens/ix';
 import {
   IxInput,
   IxSelect,
@@ -11,8 +12,7 @@ import {
 } from '@siemens/ix-react';
 import {
   FORM_MAX_WIDTH,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
+  PAGE_PADDING,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
@@ -24,10 +24,20 @@ function Forms() {
   const [inspectorName, setInspectorName] = useState('');
   const [inspectionType, setInspectionType] = useState('');
   const [inspectionDate, setInspectionDate] = useState('');
-  const [inspectionMode, setInspectionMode] = useState('');
+  const [inspectionMode, setInspectionMode] = useState('inline');
 
   const handleSave = () => {
     console.log({ inspectorName, inspectionType, inspectionDate, inspectionMode });
+    showMessage({
+      icon: 'info',
+      messageTitle: 'Time slot unavailable',
+      message: 'Inspections can only be scheduled during operational hours, 06:00–22:00. Select a time within this range.',
+      actions: [
+        { id: 'cancel', type: 'cancel', text: 'Cancel' },
+        { id: 'ok', type: 'okay', text: 'OK' },
+      ],
+      centered: true,
+    });
   };
 
   const handleCancel = () => {
@@ -39,27 +49,19 @@ function Forms() {
 
   return (
     <>
-      <IxTypography format="h1">{PAGE_FORMS}</IxTypography>
+      <IxTypography format="h1" style={{ display: 'block', marginBottom: PAGE_PADDING }}>{PAGE_FORMS}</IxTypography>
       <IxTypography
         format="body"
         style={{
           display: 'block',
-          marginTop: SECTION_MARGIN_TOP,
-          marginBottom: SECTION_MARGIN_BOTTOM,
+          marginBottom: PAGE_PADDING,
         }}
       >
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
       </IxTypography>
 
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.5rem',
-          maxWidth: FORM_MAX_WIDTH,
-        }}
-      >
+      <div className="form-container" style={{ maxWidth: FORM_MAX_WIDTH }}>
         <IxInput
           label={LABEL_INSPECTOR_NAME}
           placeholder="Jane Doe"
@@ -81,12 +83,13 @@ function Forms() {
         <IxDateInput
           label={LABEL_INSPECTION_DATE}
           helperText="Schedule the inspection"
+          placeholder="DD/MM/YYYY"
           onValueChange={(e) => setInspectionDate(e.detail as string)}
         />
 
         <IxRadioGroup
           label="Inspection Mode"
-          helperText="Inline inspections take place during production. Offline sampling requires batch removal for lab testing."
+          helperText="In-line inspection takes place during production. Offline sampling requires batch removal for lab testing."
           value={inspectionMode}
           onValueChange={(e) => setInspectionMode(e.detail as string)}
         >

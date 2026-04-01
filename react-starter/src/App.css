@@ -4,6 +4,10 @@ html, body, #root {
   padding: 0;
 }
 
+ix-content {
+  padding: 0.75rem 0 0 2rem;
+}
+
 .page-content {
   padding: 2rem;
 }

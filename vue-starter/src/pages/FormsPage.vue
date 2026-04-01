@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { showMessage } from '@siemens/ix';
 import {
   IxTypography,
   IxInput,
@@ -12,8 +13,7 @@ import {
 } from '@siemens/ix-vue';
 import {
   FORM_MAX_WIDTH,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
+  PAGE_PADDING,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
@@ -24,7 +24,7 @@ import {
 const inspectorName = ref('');
 const inspectionType = ref('');
 const inspectionDate = ref('');
-const inspectionMode = ref('');
+const inspectionMode = ref('inline');
 
 function handleSave() {
   console.log({
@@ -32,6 +32,16 @@ function handleSave() {
     inspectionType: inspectionType.value,
     inspectionDate: inspectionDate.value,
     inspectionMode: inspectionMode.value,
+  });
+  showMessage({
+    icon: 'info',
+    messageTitle: 'Time slot unavailable',
+    message: 'Inspections can only be scheduled during operational hours, 06:00–22:00. Select a time within this range.',
+    actions: [
+      { id: 'cancel', type: 'cancel', text: 'Cancel' },
+      { id: 'ok', type: 'okay', text: 'OK' },
+    ],
+    centered: true,
   });
 }
 
@@ -44,8 +54,8 @@ function handleCancel() {
 </script>
 
 <template>
-  <IxTypography format="h1"> {{ PAGE_FORMS }} </IxTypography>
-    <IxTypography format="body" :style="{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }">
+    <IxTypography format="h1" :style="{ display: 'block', marginBottom: PAGE_PADDING }"> {{ PAGE_FORMS }} </IxTypography>
+    <IxTypography format="body" :style="{ display: 'block', marginBottom: PAGE_PADDING }">
       Siemens Industrial Experience provides consistent form elements for collecting and validating
       user input.
     </IxTypography>
@@ -72,12 +82,13 @@ function handleCancel() {
       <IxDateInput
         :label="LABEL_INSPECTION_DATE"
         helper-text="Schedule the inspection"
+        placeholder="DD/MM/YYYY"
         @value-change="inspectionDate = $event.detail ?? ''"
       />
 
       <IxRadioGroup
         label="Inspection Mode"
-        helper-text="Inline inspections take place during production. Offline sampling requires batch removal for lab testing."
+        helper-text="In-line inspections takes place during production. Offline sampling requires batch removal for lab testing."
         :value="inspectionMode"
         @value-change="inspectionMode = $event.detail"
       >
