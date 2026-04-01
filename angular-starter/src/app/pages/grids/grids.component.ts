@@ -6,7 +6,6 @@ import {
   GRID_ROW_DATA,
   GRID_COL_DEFS,
   URL_AG_GRID,
-  PAGE_PADDING,
   PAGE_GRIDS,
   type GridRowData,
 } from '../../../shared';
@@ -16,7 +15,7 @@ import {
   standalone: true,
   imports: [IxTypography, AgGridAngular],
   template: `
-    <div class="grids-page" [style.padding]="PAGE_PADDING">
+    <div class="grids-page">
       <ix-typography format="h1">{{ PAGE_GRIDS }}</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience integrates the data grid library
@@ -52,7 +51,6 @@ import {
 })
 export class GridsComponent {
   protected readonly urlAgGrid = URL_AG_GRID;
-  protected readonly PAGE_PADDING = PAGE_PADDING;
   protected readonly PAGE_GRIDS = PAGE_GRIDS;
 
   rowData = GRID_ROW_DATA;

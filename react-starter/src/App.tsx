@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import {
   IxApplication,
   IxApplicationHeader,
+  IxAvatar,
   IxMenu,
   IxMenuItem,
   IxContent,
@@ -27,6 +28,7 @@ function App() {
         <div slot="logo">
           <img src={logo} alt="Siemens" style={LOGO_STYLE} />
         </div>
+        <IxAvatar username="John Doe" />
       </IxApplicationHeader>
 
       <IxMenu enableToggleTheme>

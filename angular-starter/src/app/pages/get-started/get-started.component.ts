@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IxTypography } from '@siemens/ix-angular/standalone';
-import { PAGE_PADDING, URL_IX_DOCS } from '../../../shared';
+import { URL_IX_DOCS } from '../../../shared';
 
 @Component({
   selector: 'app-get-started',
   standalone: true,
   imports: [IxTypography],
   template: `
-    <div [style.padding]="PAGE_PADDING">
+    <div>
       <ix-typography format="h1"> Get Started with Siemens Industrial Experience </ix-typography>
       <ix-typography format="body" style="display: block; margin-top: 1rem; margin-bottom: 1.5rem">
         The starter app includes an application shell and three example pages with commonly used
@@ -55,7 +55,6 @@ import { PAGE_PADDING, URL_IX_DOCS } from '../../../shared';
   `,
 })
 export class GetStartedComponent {
-  PAGE_PADDING = PAGE_PADDING;
   URL_IX_DOCS = URL_IX_DOCS;
 
   constructor(private router: Router) {}

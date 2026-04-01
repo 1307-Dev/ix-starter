@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {
   IxApplication,
   IxApplicationHeader,
+  IxAvatar,
   IxMenu,
   IxMenuItem,
   IxContent,
@@ -19,6 +20,7 @@ import { NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '../shared';
     RouterLink,
     IxApplication,
     IxApplicationHeader,
+    IxAvatar,
     IxMenu,
     IxMenuItem,
     IxContent,
@@ -29,6 +31,7 @@ import { NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '../shared';
         <div slot="logo">
           <img src="assets/logo.png" alt="Siemens" [style.height]="LOGO_HEIGHT" />
         </div>
+        <ix-avatar username="John Doe"></ix-avatar>
       </ix-application-header>
 
       <ix-menu enableToggleTheme>

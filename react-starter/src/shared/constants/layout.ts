@@ -13,6 +13,5 @@ export const LOGO_STYLE = {
   height: LOGO_HEIGHT,
 };
 
-export const PAGE_PADDING = '2rem';
 export const SECTION_MARGIN_TOP = '0.5rem';
 export const SECTION_MARGIN_BOTTOM = '2rem';

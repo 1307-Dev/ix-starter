@@ -10,7 +10,6 @@ import {
   IxTypography,
 } from '@siemens/ix-react';
 import {
-  PAGE_PADDING,
   FORM_MAX_WIDTH,
   SECTION_MARGIN_TOP,
   SECTION_MARGIN_BOTTOM,
@@ -39,11 +38,15 @@ function Forms() {
   };
 
   return (
-    <div style={{ padding: PAGE_PADDING }}>
+    <>
       <IxTypography format="h1">{PAGE_FORMS}</IxTypography>
       <IxTypography
         format="body"
-        style={{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }}
+        style={{
+          display: 'block',
+          marginTop: SECTION_MARGIN_TOP,
+          marginBottom: SECTION_MARGIN_BOTTOM,
+        }}
       >
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
@@ -107,7 +110,7 @@ function Forms() {
           </IxButton>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

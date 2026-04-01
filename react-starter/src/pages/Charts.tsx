@@ -11,7 +11,6 @@ import {
   CHART_SECTION_TITLE,
   CHART_LABEL,
   ICON_DRAG_AND_DROP,
-  PAGE_PADDING,
   PAGE_CHARTS,
   SECTION_MARGIN_TOP,
   SECTION_MARGIN_BOTTOM,
@@ -60,11 +59,15 @@ function Charts() {
   }, []);
 
   return (
-    <div style={{ padding: PAGE_PADDING }}>
+    <>
       <IxTypography format="h1">{PAGE_CHARTS}</IxTypography>
       <IxTypography
         format="body"
-        style={{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }}
+        style={{
+          display: 'block',
+          marginTop: SECTION_MARGIN_TOP,
+          marginBottom: SECTION_MARGIN_BOTTOM,
+        }}
       >
         Siemens Industrial Experience provides an{' '}
         <a
@@ -101,7 +104,7 @@ function Charts() {
         <IxIcon name={ICON_DRAG_AND_DROP} size="16" />
         <IxTypography format="body">{CHART_LABEL}</IxTypography>
       </div>
-    </div>
+    </>
   );
 }
 

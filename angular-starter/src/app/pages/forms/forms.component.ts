@@ -11,7 +11,6 @@ import {
   IxButton,
 } from '@siemens/ix-angular/standalone';
 import {
-  PAGE_PADDING,
   FORM_MAX_WIDTH,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
@@ -35,7 +34,7 @@ import {
     IxButton,
   ],
   template: `
-    <div class="forms-page" [style.padding]="PAGE_PADDING">
+    <div class="forms-page">
       <ix-typography format="h1">{{ PAGE_FORMS }}</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides consistent form elements for collecting and
@@ -106,7 +105,6 @@ import {
   ],
 })
 export class FormsComponent {
-  PAGE_PADDING = PAGE_PADDING;
   FORM_MAX_WIDTH = FORM_MAX_WIDTH;
   PAGE_FORMS = PAGE_FORMS;
   LABEL_INSPECTOR_NAME = LABEL_INSPECTOR_NAME;

@@ -4,7 +4,6 @@ import {
   GRID_ROW_DATA,
   GRID_COL_DEFS,
   URL_AG_GRID,
-  PAGE_PADDING,
   PAGE_GRIDS,
   SECTION_MARGIN_TOP,
   SECTION_MARGIN_BOTTOM,
@@ -15,11 +14,15 @@ import '../shared/styles/ag-grid-theme.css';
 
 function Grids() {
   return (
-    <div style={{ padding: PAGE_PADDING }}>
+    <>
       <IxTypography format="h1">{PAGE_GRIDS}</IxTypography>
       <IxTypography
         format="body"
-        style={{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }}
+        style={{
+          display: 'block',
+          marginTop: SECTION_MARGIN_TOP,
+          marginBottom: SECTION_MARGIN_BOTTOM,
+        }}
       >
         Siemens Industrial Experience integrates the data grid library{' '}
         <a
@@ -43,7 +46,7 @@ function Grids() {
           theme="legacy"
         />
       </div>
-    </div>
+    </>
   );
 }
 

@@ -12,7 +12,6 @@ import {
   CHART_MAX_WIDTH,
   CHART_HEIGHT,
   CHART_INIT_DELAY_MS,
-  PAGE_PADDING,
   PAGE_CHARTS,
 } from '../../../shared';
 
@@ -21,7 +20,7 @@ import {
   standalone: true,
   imports: [IxTypography, IxIcon],
   template: `
-    <div class="charts-page" [style.padding]="PAGE_PADDING">
+    <div class="charts-page">
       <ix-typography format="h1">{{ PAGE_CHARTS }}</ix-typography>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
@@ -79,7 +78,6 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   protected readonly iconDragAndDrop = ICON_DRAG_AND_DROP;
   protected readonly CHART_MAX_WIDTH = CHART_MAX_WIDTH;
   protected readonly CHART_HEIGHT = CHART_HEIGHT;
-  protected readonly PAGE_PADDING = PAGE_PADDING;
   private readonly chartInitDelayMs = CHART_INIT_DELAY_MS;
 
   private themeChangeHandler = (newTheme: string) => {

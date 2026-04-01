@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router';
-import { IxApplication, IxApplicationHeader, IxMenu, IxMenuItem, IxContent } from '@siemens/ix-vue';
+import { IxApplication, IxApplicationHeader, IxAvatar, IxMenu, IxMenuItem, IxContent } from '@siemens/ix-vue';
 import { NAV_ITEMS, APP_TITLE, LOGO_STYLE } from './shared';
 import logo from './assets/logo.png';
 
@@ -14,6 +14,7 @@ const route = useRoute();
       <div slot="logo">
         <img :src="logo" alt="Siemens" :style="LOGO_STYLE" />
       </div>
+      <IxAvatar username="John Doe" />
     </IxApplicationHeader>
 
     <IxMenu enable-toggle-theme>

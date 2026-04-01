@@ -12,7 +12,6 @@ import {
   ICON_DRAG_AND_DROP,
   CHART_MAX_WIDTH,
   CHART_HEIGHT,
-  PAGE_PADDING,
   PAGE_CHARTS,
 } from '../shared';
 
@@ -47,8 +46,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :style="{ padding: PAGE_PADDING }">
-    <IxTypography format="h1"> {{ PAGE_CHARTS }} </IxTypography>
+  <IxTypography format="h1"> {{ PAGE_CHARTS }} </IxTypography>
     <IxTypography format="body" class="description">
       Siemens Industrial Experience provides an
       <a :href="URL_ECHARTS" target="_blank" rel="noreferrer"> ECharts </a>
@@ -80,7 +78,6 @@ onUnmounted(() => {
         {{ CHART_LABEL }}
       </IxTypography>
     </div>
-  </div>
 </template>
 
 <style scoped>

@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { IxTypography } from '@siemens/ix-react';
-import { PAGE_PADDING, URL_IX_DOCS } from '../shared';
+import { URL_IX_DOCS } from '../shared';
 
 function GetStarted() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: PAGE_PADDING }}>
+    <>
       <IxTypography format="h1">Get Started with Siemens Industrial Experience</IxTypography>
       <IxTypography
         format="body"
@@ -82,7 +82,7 @@ function GetStarted() {
           ix.siemens.io
         </a>
       </IxTypography>
-    </div>
+    </>
   );
 }
 

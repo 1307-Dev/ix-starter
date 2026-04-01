@@ -20,9 +20,10 @@ export type ColorScheme = 'light' | 'dark';
  */
 export function initializeTheme(
   theme: ThemeName = 'classic',
-  colorScheme: ColorScheme = 'light',
+  colorScheme: ColorScheme = 'light'
 ): void {
-  themeSwitcher.setTheme(`theme-${theme}-${colorScheme}`);
+  themeSwitcher.setTheme(theme);
+  themeSwitcher.setVariant(colorScheme);
 }
 
 /**
@@ -43,5 +44,6 @@ export function getCurrentTheme(): string {
  * Set a specific theme
  */
 export function setTheme(theme: ThemeName, colorScheme: ColorScheme = 'light'): void {
-  themeSwitcher.setTheme(`theme-${theme}-${colorScheme}`);
+  themeSwitcher.setTheme(theme);
+  themeSwitcher.setVariant(colorScheme);
 }
