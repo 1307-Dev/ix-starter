@@ -90,7 +90,7 @@ function handleCancel() {
 
       <IxRadioGroup
         label="Inspection Mode"
-        helper-text="In-line inspections takes place during production. Offline sampling requires batch removal for lab testing."
+        helper-text="In-line inspection takes place during production. Offline sampling requires batch removal for lab testing."
         :value="inspectionMode"
         @value-change="inspectionMode = $event.detail"
       >
