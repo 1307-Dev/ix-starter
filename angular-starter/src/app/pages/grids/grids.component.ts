@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IxTypography } from '@siemens/ix-angular/standalone';
+import { IxContentHeader, IxTypography } from '@siemens/ix-angular/standalone';
 import { AgGridAngular } from 'ag-grid-angular';
+import * as ag from 'ag-grid-community';
 import { ColDef } from 'ag-grid-community';
+import { getIxTheme } from '@siemens/ix-aggrid';
 import {
   GRID_ROW_DATA,
   GRID_COL_DEFS,
@@ -13,10 +15,10 @@ import {
 @Component({
   selector: 'app-grids',
   standalone: true,
-  imports: [IxTypography, AgGridAngular],
+  imports: [IxContentHeader, IxTypography, AgGridAngular],
   template: `
     <div class="grids-page">
-      <ix-typography format="h1">{{ PAGE_GRIDS }}</ix-typography>
+      <ix-content-header [headerTitle]="PAGE_GRIDS"></ix-content-header>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience integrates the data grid library
         <a [href]="urlAgGrid" target="_blank" rel="noreferrer"> AG Grid </a>.
@@ -25,13 +27,12 @@ import {
         Experience design system.
       </ix-typography>
 
-      <div class="ag-theme-alpine ix-ag-grid">
+      <div>
         <ag-grid-angular
-          style="width: 100%;"
           [rowData]="rowData"
           [columnDefs]="columnDefs"
           domLayout="autoHeight"
-          theme="legacy"
+          [theme]="ixTheme"
         />
       </div>
     </div>
@@ -44,6 +45,7 @@ import {
         margin-bottom: 2rem;
       }
       .description a {
+        color: inherit;
         text-decoration: underline;
       }
     `,
@@ -52,6 +54,7 @@ import {
 export class GridsComponent {
   protected readonly urlAgGrid = URL_AG_GRID;
   protected readonly PAGE_GRIDS = PAGE_GRIDS;
+  protected readonly ixTheme = getIxTheme(ag);
 
   rowData = GRID_ROW_DATA;
 

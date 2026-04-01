@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { showMessage } from '@siemens/ix';
 import {
+  IxContentHeader,
   IxTypography,
   IxInput,
   IxSelect,
@@ -13,7 +14,8 @@ import {
 } from '@siemens/ix-angular/standalone';
 import {
   FORM_MAX_WIDTH,
-  PAGE_PADDING,
+  SECTION_MARGIN_TOP,
+  SECTION_MARGIN_BOTTOM,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
@@ -26,6 +28,7 @@ import {
   standalone: true,
   imports: [
     FormsModule,
+    IxContentHeader,
     IxTypography,
     IxInput,
     IxSelect,
@@ -37,7 +40,7 @@ import {
   ],
   template: `
     <div class="forms-page">
-      <ix-typography format="h1" class="page-title">{{ PAGE_FORMS }}</ix-typography>
+      <ix-content-header [headerTitle]="PAGE_FORMS"></ix-content-header>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
@@ -94,7 +97,8 @@ import {
       }
       .description {
         display: block;
-        margin-bottom: 1.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
       }
       .form-container {
         display: flex;
@@ -112,7 +116,6 @@ import {
 })
 export class FormsComponent {
   FORM_MAX_WIDTH = FORM_MAX_WIDTH;
-  PAGE_PADDING = PAGE_PADDING;
   PAGE_FORMS = PAGE_FORMS;
   LABEL_INSPECTOR_NAME = LABEL_INSPECTOR_NAME;
   LABEL_INSPECTION_TYPE = LABEL_INSPECTION_TYPE;

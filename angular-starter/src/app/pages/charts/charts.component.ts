@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { IxTypography } from '@siemens/ix-angular/standalone';
+import { IxContentHeader, IxTypography, IxIcon } from '@siemens/ix-angular/standalone';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -18,11 +18,11 @@ import {
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [IxTypography],
+  imports: [IxContentHeader, IxTypography, IxIcon],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="charts-page">
-      <ix-typography format="h1">{{ PAGE_CHARTS }}</ix-typography>
+      <ix-content-header [headerTitle]="PAGE_CHARTS"></ix-content-header>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
         <a [href]="urlEcharts" target="_blank" rel="noreferrer"> ECharts </a>
@@ -53,6 +53,7 @@ import {
         margin-bottom: 2rem;
       }
       .description a {
+        color: inherit;
         text-decoration: underline;
       }
       .chart-title {

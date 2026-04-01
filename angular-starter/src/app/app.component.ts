@@ -31,13 +31,13 @@ import { NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '../shared';
         <div slot="logo">
           <img src="assets/logo.png" alt="Siemens" [style.height]="LOGO_HEIGHT" />
         </div>
-        <ix-avatar username="John Doe"></ix-avatar>
+        <ix-avatar initials="JD"></ix-avatar>
       </ix-application-header>
 
       <ix-menu enableToggleTheme>
         @for (item of navItems; track item.path) {
           <a [routerLink]="item.path === '/' ? '' : item.path.slice(1)">
-            <ix-menu-item icon="{{item.icon}}" [class.active]="isActiveRoute(item.path)">
+            <ix-menu-item [attr.icon]="item.icon" [attr.active]="isActiveRoute(item.path) ? '' : null">
               {{ item.label }}
             </ix-menu-item>
           </a>

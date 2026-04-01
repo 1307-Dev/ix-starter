@@ -8,11 +8,13 @@ import {
   IxRadioGroup,
   IxRadio,
   IxButton,
+  IxContentHeader,
   IxTypography,
 } from '@siemens/ix-react';
 import {
   FORM_MAX_WIDTH,
-  PAGE_PADDING,
+  SECTION_MARGIN_TOP,
+  SECTION_MARGIN_BOTTOM,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
@@ -49,12 +51,13 @@ function Forms() {
 
   return (
     <>
-      <IxTypography format="h1" style={{ display: 'block', marginBottom: PAGE_PADDING }}>{PAGE_FORMS}</IxTypography>
+      <IxContentHeader headerTitle={PAGE_FORMS} />
       <IxTypography
         format="body"
         style={{
           display: 'block',
-          marginBottom: PAGE_PADDING,
+          marginTop: SECTION_MARGIN_TOP,
+          marginBottom: SECTION_MARGIN_BOTTOM,
         }}
       >
         Siemens Industrial Experience provides consistent form elements for collecting and
