@@ -18,10 +18,10 @@ import {
 const chartRef = ref<HTMLDivElement | null>(null);
 const instance = shallowRef<echarts.ECharts | null>(null);
 
-function handleThemeChange(newTheme: string) {
+function handleThemeChange() {
   instance.value?.dispose();
   if (!chartRef.value) return;
-  instance.value = echarts.init(chartRef.value, convertThemeName(newTheme));
+  instance.value = echarts.init(chartRef.value, convertThemeName(themeSwitcher.getCurrentTheme()));
   instance.value.setOption(buildChartOptions());
 }
 
@@ -35,11 +35,13 @@ onMounted(() => {
   instance.value = echarts.init(chartRef.value, theme);
   instance.value.setOption(buildChartOptions());
   themeSwitcher.themeChanged.on(handleThemeChange);
+  themeSwitcher.schemaChanged.on(handleThemeChange);
   window.addEventListener('resize', handleResize);
 });
 
 onUnmounted(() => {
   themeSwitcher.themeChanged.off(handleThemeChange);
+  themeSwitcher.schemaChanged.off(handleThemeChange);
   window.removeEventListener('resize', handleResize);
   instance.value?.dispose();
 });

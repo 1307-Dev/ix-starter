@@ -39,20 +39,22 @@ function Charts() {
     instanceRef.current = echarts.init(chartRef.current, theme);
     instanceRef.current.setOption(buildChartOptions());
 
-    const handleThemeChange = (newTheme: string) => {
+    const handleThemeChange = () => {
       instanceRef.current?.dispose();
       if (!chartRef.current) return;
-      instanceRef.current = echarts.init(chartRef.current, convertThemeName(newTheme));
+      instanceRef.current = echarts.init(chartRef.current, convertThemeName(themeSwitcher.getCurrentTheme()));
       instanceRef.current.setOption(buildChartOptions());
     };
 
     themeSwitcher.themeChanged.on(handleThemeChange);
+    themeSwitcher.schemaChanged.on(handleThemeChange);
 
     const handleResize = () => instanceRef.current?.resize();
     window.addEventListener('resize', handleResize);
 
     return () => {
       themeSwitcher.themeChanged.off(handleThemeChange);
+      themeSwitcher.schemaChanged.off(handleThemeChange);
       window.removeEventListener('resize', handleResize);
       instanceRef.current?.dispose();
     };

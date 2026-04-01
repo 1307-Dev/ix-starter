@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { IxTypography, IxIcon } from '@siemens/ix-angular/standalone';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { IxTypography } from '@siemens/ix-angular/standalone';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -18,7 +18,8 @@ import {
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [IxTypography, IxIcon],
+  imports: [IxTypography],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="charts-page">
       <ix-typography format="h1">{{ PAGE_CHARTS }}</ix-typography>
@@ -39,7 +40,7 @@ import {
       ></div>
 
       <div class="chart-label" [style.max-width]="CHART_MAX_WIDTH">
-        <ix-icon [attr.name]="iconDragAndDrop" size="16"></ix-icon>
+        <ix-icon name="drag-and-drop" size="16"></ix-icon>
         <ix-typography format="body">{{ chartLabel }}</ix-typography>
       </div>
     </div>
@@ -80,12 +81,12 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   protected readonly CHART_HEIGHT = CHART_HEIGHT;
   private readonly chartInitDelayMs = CHART_INIT_DELAY_MS;
 
-  private themeChangeHandler = (newTheme: string) => {
+  private themeChangeHandler = () => {
     this.chartInstance?.dispose();
     if (!this.chartContainer?.nativeElement) return;
     this.chartInstance = echarts.init(
       this.chartContainer.nativeElement,
-      convertThemeName(newTheme)
+      convertThemeName(themeSwitcher.getCurrentTheme())
     );
     this.chartInstance.setOption(buildChartOptions());
   };
@@ -101,12 +102,14 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
       this.chartInstance.setOption(buildChartOptions());
 
       themeSwitcher.themeChanged.on(this.themeChangeHandler);
+      themeSwitcher.schemaChanged.on(this.themeChangeHandler);
       window.addEventListener('resize', this.resizeHandler);
     }, this.chartInitDelayMs);
   }
 
   ngOnDestroy() {
     themeSwitcher.themeChanged.off(this.themeChangeHandler);
+    themeSwitcher.schemaChanged.off(this.themeChangeHandler);
     window.removeEventListener('resize', this.resizeHandler);
     this.chartInstance?.dispose();
   }

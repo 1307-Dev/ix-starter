@@ -27,7 +27,7 @@ import { NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '../shared';
   ],
   template: `
     <ix-application>
-      <ix-application-header [attr.name]="APP_TITLE">
+      <ix-application-header name="{{APP_TITLE}}">
         <div slot="logo">
           <img src="assets/logo.png" alt="Siemens" [style.height]="LOGO_HEIGHT" />
         </div>
@@ -37,7 +37,7 @@ import { NAV_ITEMS, APP_TITLE, LOGO_HEIGHT } from '../shared';
       <ix-menu enableToggleTheme>
         @for (item of navItems; track item.path) {
           <a [routerLink]="item.path === '/' ? '' : item.path.slice(1)">
-            <ix-menu-item [attr.icon]="item.icon" [class.active]="isActiveRoute(item.path)">
+            <ix-menu-item icon="{{item.icon}}" [class.active]="isActiveRoute(item.path)">
               {{ item.label }}
             </ix-menu-item>
           </a>
