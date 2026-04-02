@@ -51,8 +51,10 @@ onUnmounted(() => {
   <IxContentHeader :header-title="PAGE_CHARTS" />
   <IxTypography format="body" class="description">
     Siemens Industrial Experience provides an
-    <a :href="URL_ECHARTS" target="_blank" rel="noreferrer"> ECharts </a>
-    theme. This lets you use different chart types in the Siemens Industrial Experience design
+    <a :href="URL_ECHARTS" target="_blank" rel="noreferrer">ECharts</a>
+    theme. 
+    <br />
+    This lets you use different chart types in the Siemens Industrial Experience design
     system.
   </IxTypography>
 
@@ -85,8 +87,8 @@ onUnmounted(() => {
 <style scoped>
 .description {
   display: block;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .description a {

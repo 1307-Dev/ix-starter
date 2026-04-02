@@ -12,8 +12,6 @@ import {
   CHART_LABEL,
   ICON_DRAG_AND_DROP,
   PAGE_CHARTS,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
 } from '../shared';
 
 function Charts() {
@@ -67,8 +65,8 @@ function Charts() {
         format="body"
         style={{
           display: 'block',
-          marginTop: SECTION_MARGIN_TOP,
-          marginBottom: SECTION_MARGIN_BOTTOM,
+          marginTop: '1.5rem',
+          marginBottom: '1.5rem',
         }}
       >
         Siemens Industrial Experience provides an{' '}
@@ -80,7 +78,9 @@ function Charts() {
         >
           ECharts
         </a>{' '}
-        theme. This lets you use different chart types in the Siemens Industrial Experience design
+        theme. 
+        <br />
+        This lets you use different chart types in the Siemens Industrial Experience design
         system.
       </IxTypography>
 

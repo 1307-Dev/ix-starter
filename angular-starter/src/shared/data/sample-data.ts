@@ -17,6 +17,9 @@ export const CHART_X_AXIS = {
   min: 0,
   max: 3500,
   interval: 500,
+  name: 'Operating hours',
+  nameLocation: 'middle' as const,
+  nameGap: 36,
 };
 
 export const CHART_Y_AXIS = {
@@ -24,6 +27,7 @@ export const CHART_Y_AXIS = {
   min: 0,
   max: 2500,
   interval: 500,
+  name: 'Vibration (mm/s)',
 };
 
 export interface GridRowData {
@@ -41,16 +45,16 @@ export const GRID_ROW_DATA: GridRowData[] = [
   { series: 'SINUMERIK', model: '828D', quantity: 73 },
 ];
 
-export const GRID_COL_DEFS: { field: keyof GridRowData; headerName: string; flex: number }[] = [
+export const GRID_COL_DEFS: { field: keyof GridRowData; headerName: string; flex: number; type?: string }[] = [
   { field: 'series', headerName: 'Series', flex: 1 },
   { field: 'model', headerName: 'Model', flex: 1 },
-  { field: 'quantity', headerName: 'Quantity', flex: 1 },
+  { field: 'quantity', headerName: 'Quantity', flex: 1, type: 'rightAligned' },
 ];
 
 export function buildChartOptions() {
   return {
     tooltip: { trigger: 'item' as const },
-    grid: { left: 60, right: 30, top: 30, bottom: 50 },
+    grid: { left: 60, right: 30, top: 30, bottom: 60 },
     xAxis: CHART_X_AXIS,
     yAxis: CHART_Y_AXIS,
     series: [

@@ -1,4 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { IxContentHeader, IxTypography, IxIcon } from '@siemens/ix-angular/standalone';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
@@ -25,9 +32,10 @@ import {
       <ix-content-header [headerTitle]="PAGE_CHARTS"></ix-content-header>
       <ix-typography format="body" class="description">
         Siemens Industrial Experience provides an
-        <a [href]="urlEcharts" target="_blank" rel="noreferrer"> ECharts </a>
-        theme. This lets you use different chart types in the Siemens Industrial Experience design
-        system.
+        <a [href]="urlEcharts" target="_blank" rel="noreferrer">ECharts</a>
+        theme.
+        <br />
+        This lets you use different chart types in the Siemens Industrial Experience design system.
       </ix-typography>
 
       <ix-typography format="h2" class="chart-title">{{ chartSectionTitle }}</ix-typography>
@@ -49,8 +57,8 @@ import {
     `
       .description {
         display: block;
-        margin-top: 0.5rem;
-        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
       }
       .description a {
         color: inherit;
