@@ -9,6 +9,7 @@ import {
   PAGE_GRIDS,
   SECTION_MARGIN_TOP,
   SECTION_MARGIN_BOTTOM,
+  GRID_MAX_WIDTH,
 } from '../shared';
 
 const ixTheme = getIxTheme(ag);
@@ -39,7 +40,7 @@ function Grids() {
         Experience design system.
       </IxTypography>
 
-      <div>
+      <div style={{ maxWidth: GRID_MAX_WIDTH }}>
         <AgGridReact
           rowData={GRID_ROW_DATA}
           columnDefs={GRID_COL_DEFS}

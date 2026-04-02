@@ -10,6 +10,7 @@ import {
   PAGE_GRIDS,
   SECTION_MARGIN_TOP,
   SECTION_MARGIN_BOTTOM,
+  GRID_MAX_WIDTH,
 } from '../shared';
 
 const ixTheme = getIxTheme(ag);
@@ -32,7 +33,7 @@ const ixTheme = getIxTheme(ag);
     design system.
   </IxTypography>
 
-  <div>
+  <div :style="{ maxWidth: GRID_MAX_WIDTH }">
     <AgGridVue
       :row-data="GRID_ROW_DATA"
       :column-defs="GRID_COL_DEFS"

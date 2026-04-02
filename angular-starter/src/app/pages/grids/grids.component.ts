@@ -10,6 +10,7 @@ import {
   URL_AG_GRID,
   PAGE_GRIDS,
   type GridRowData,
+  GRID_MAX_WIDTH,
 } from '../../../shared';
 
 @Component({
@@ -27,7 +28,7 @@ import {
         Experience design system.
       </ix-typography>
 
-      <div>
+      <div [style.maxWidth]="GRID_MAX_WIDTH">
         <ag-grid-angular
           [rowData]="rowData"
           [columnDefs]="columnDefs"
@@ -54,6 +55,7 @@ import {
 export class GridsComponent {
   protected readonly urlAgGrid = URL_AG_GRID;
   protected readonly PAGE_GRIDS = PAGE_GRIDS;
+  protected readonly GRID_MAX_WIDTH = GRID_MAX_WIDTH;
   protected readonly ixTheme = getIxTheme(ag);
 
   rowData = GRID_ROW_DATA;
