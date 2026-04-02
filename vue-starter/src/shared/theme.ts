@@ -3,7 +3,7 @@ import { themeSwitcher } from '@siemens/ix';
 /**
  * Available theme names
  */
-export type ThemeName = 'classic';
+export type ThemeName = 'classic' | 'brand';
 
 /**
  * Available color schemes

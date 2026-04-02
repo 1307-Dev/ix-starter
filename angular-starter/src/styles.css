@@ -1,3 +1,5 @@
+@import '@siemens/ix-brand-theme/dist/ix-brand-theme/ix-brand-theme.css';
+
 html, body {
   height: 100%;
   margin: 0;

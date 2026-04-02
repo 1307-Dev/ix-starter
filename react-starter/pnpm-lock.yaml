@@ -14,6 +14,9 @@ importers:
       '@siemens/ix-aggrid':
         specifier: ^4.0.1
         version: 4.0.2(@siemens/ix-icons@3.4.0)(ag-grid-community@33.3.2)
+      '@siemens/ix-brand-theme':
+        specifier: ^3.0.0
+        version: 3.0.0(@siemens/ix@4.4.0(@siemens/ix-icons@3.4.0))
       '@siemens/ix-echarts':
         specifier: ^2.0.0
         version: 2.3.1(echarts@5.6.0)
@@ -588,6 +591,11 @@ packages:
     resolution: {integrity: sha512-s0tfx4bP4hV/Hbz2ka3FxJOZvU7IG0QiC1RaI8RPdixzBGWP9zxj6fXMzt+VE2/AyfsS6XvrB/tqXydyhbNpaQ==}
     peerDependencies:
       ag-grid-community: ^33
+
+  '@siemens/ix-brand-theme@3.0.0':
+    resolution: {integrity: sha512-WSeNfvYnF5jkBOwPWd8qGIa5sFmU25tE0PEtzynWnL03EZ4/u0BX3KYbPgiRHQ5jrDQnkwT9/cOsOy+/AVGSeA==, tarball: https://captain.rtf.siemens.net/artifactory/api/npm/siemens-npm/@siemens/ix-brand-theme/-/@siemens/ix-brand-theme-3.0.0.tgz}
+    peerDependencies:
+      '@siemens/ix': ^4.0.0
 
   '@siemens/ix-echarts@2.3.1':
     resolution: {integrity: sha512-K5p4Dxt+esSkJuwj2DEL9ADxeZaeKjfQOKlV0QH/Uu/EdYBLCKo5LOgk/t/HvAGhl+C+Pw2qq985C+S+Ci2Z4Q==}
@@ -1780,6 +1788,10 @@ snapshots:
       ag-grid-community: 33.3.2
     transitivePeerDependencies:
       - '@siemens/ix-icons'
+
+  '@siemens/ix-brand-theme@3.0.0(@siemens/ix@4.4.0(@siemens/ix-icons@3.4.0))':
+    dependencies:
+      '@siemens/ix': 4.4.0(@siemens/ix-icons@3.4.0)
 
   '@siemens/ix-echarts@2.3.1(echarts@5.6.0)':
     dependencies:

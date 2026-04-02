@@ -41,6 +41,9 @@ importers:
       '@siemens/ix-angular':
         specifier: ^4.2.0
         version: 4.4.0(@angular/core@20.3.18(@angular/compiler@20.3.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/forms@20.3.18(@angular/common@20.3.18(@angular/core@20.3.18(@angular/compiler@20.3.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.18(@angular/compiler@20.3.18)(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@20.3.18(@angular/animations@20.3.18(@angular/core@20.3.18(@angular/compiler@20.3.18)(rxjs@7.8.2)(zone.js@0.15.1)))(@angular/common@20.3.18(@angular/core@20.3.18(@angular/compiler@20.3.18)(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@20.3.18(@angular/compiler@20.3.18)(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2))(@siemens/ix-icons@3.4.0)
+      '@siemens/ix-brand-theme':
+        specifier: ^3.0.0
+        version: 3.0.0(@siemens/ix@4.4.0(@siemens/ix-icons@3.4.0))
       '@siemens/ix-echarts':
         specifier: ^2.0.0
         version: 2.3.1(echarts@5.6.0)
@@ -1935,6 +1938,11 @@ packages:
       '@angular/core': '>=20.0.0'
       '@angular/forms': '>=20.0.0'
       '@siemens/ix-icons': ^3.2.0
+
+  '@siemens/ix-brand-theme@3.0.0':
+    resolution: {integrity: sha512-WSeNfvYnF5jkBOwPWd8qGIa5sFmU25tE0PEtzynWnL03EZ4/u0BX3KYbPgiRHQ5jrDQnkwT9/cOsOy+/AVGSeA==, tarball: https://captain.rtf.siemens.net/artifactory/api/npm/siemens-npm/@siemens/ix-brand-theme/-/@siemens/ix-brand-theme-3.0.0.tgz}
+    peerDependencies:
+      '@siemens/ix': ^4.0.0
 
   '@siemens/ix-echarts@2.3.1':
     resolution: {integrity: sha512-K5p4Dxt+esSkJuwj2DEL9ADxeZaeKjfQOKlV0QH/Uu/EdYBLCKo5LOgk/t/HvAGhl+C+Pw2qq985C+S+Ci2Z4Q==}
@@ -6499,6 +6507,10 @@ snapshots:
       '@siemens/ix': 4.4.0(@siemens/ix-icons@3.4.0)
       '@siemens/ix-icons': 3.4.0
       tslib: 2.8.1
+
+  '@siemens/ix-brand-theme@3.0.0(@siemens/ix@4.4.0(@siemens/ix-icons@3.4.0))':
+    dependencies:
+      '@siemens/ix': 4.4.0(@siemens/ix-icons@3.4.0)
 
   '@siemens/ix-echarts@2.3.1(echarts@5.6.0)':
     dependencies:

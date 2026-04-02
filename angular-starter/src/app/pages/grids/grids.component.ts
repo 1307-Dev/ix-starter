@@ -56,7 +56,12 @@ export class GridsComponent {
   protected readonly urlAgGrid = URL_AG_GRID;
   protected readonly PAGE_GRIDS = PAGE_GRIDS;
   protected readonly GRID_MAX_WIDTH = GRID_MAX_WIDTH;
-  protected readonly ixTheme = getIxTheme(ag);
+  protected readonly ixTheme = getIxTheme(ag).withParams({
+    wrapperBorder: false,
+    headerRowBorder: true,
+    rowBorder: false,
+    borderColor: 'var(--theme-color-std-bdr)',
+  });
 
   rowData = GRID_ROW_DATA;
 

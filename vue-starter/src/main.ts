@@ -13,6 +13,8 @@ import { initializeTheme, initializeIcons } from './shared';
 import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
 import '@siemens/ix/dist/siemens-ix/theme/classic-dark.css';
 import '@siemens/ix/dist/siemens-ix/theme/classic-light.css';
+import '@siemens/ix-brand-theme/dist/ix-brand-theme/ix-brand-theme.css';
+import { defineCustomElements as defineIxBrandTheme } from '@siemens/ix-brand-theme/loader';
 import './styles/global.css';
 
 import App from './App.vue';
@@ -20,6 +22,7 @@ import App from './App.vue';
 initializeIcons();
 defineCustomElements();
 defineIxIconsCustomElements();
+defineIxBrandTheme();
 
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
 registerTheme(echarts);
@@ -47,6 +50,6 @@ app.config.errorHandler = (err, instance, info) => {
 
 app.use(router);
 
-initializeTheme('classic', 'dark');
+initializeTheme('brand', 'dark');
 
 app.mount('#app');

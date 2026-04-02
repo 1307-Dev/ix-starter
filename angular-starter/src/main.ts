@@ -13,11 +13,13 @@ import { AppComponent } from './app/app.component';
 
 defineCustomElements();
 defineIxIconsCustomElements();
+import { defineCustomElements as defineIxBrandTheme } from '@siemens/ix-brand-theme/loader';
+defineIxBrandTheme();
 initializeIcons();
 
 echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
 registerTheme(echarts);
 ModuleRegistry.registerModules([AllCommunityModule]);
-initializeTheme('classic', 'dark');
+initializeTheme('brand', 'dark');
 
 bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));

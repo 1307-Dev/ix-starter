@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "@siemens/ix": "^4.2.0",
-    "@siemens/ix-vue": "^4.2.0",
-    "@siemens/ix-icons": "^3.2.0",
     "@siemens/ix-aggrid": "^4.0.1",
+    "@siemens/ix-brand-theme": "^3.0.0",
     "@siemens/ix-echarts": "^2.0.0",
+    "@siemens/ix-icons": "^3.2.0",
+    "@siemens/ix-vue": "^4.2.0",
     "ag-grid-community": "^33.0.0",
     "ag-grid-vue3": "^33.0.0",
     "echarts": "^5.4.1",

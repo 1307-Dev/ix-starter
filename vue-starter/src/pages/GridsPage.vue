@@ -13,7 +13,12 @@ import {
   GRID_MAX_WIDTH,
 } from '../shared';
 
-const ixTheme = getIxTheme(ag);
+const ixTheme = getIxTheme(ag).withParams({
+  wrapperBorder: false,
+  headerRowBorder: true,
+  rowBorder: false,
+  borderColor: 'var(--theme-color-std-bdr)',
+});
 </script>
 
 <template>
