@@ -19,8 +19,6 @@ import {
   LABEL_INSPECTION_DATE,
   INSPECTION_TYPES,
   PAGE_FORMS,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
 } from '../shared';
 
 const inspectorName = ref('');
@@ -57,14 +55,12 @@ function handleCancel() {
 
 <template>
   <IxContentHeader :header-title="PAGE_FORMS" />
-  <IxTypography format="body" :style="{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: SECTION_MARGIN_BOTTOM }">
+  <IxTypography format="body" class="description">
     Siemens Industrial Experience provides consistent form elements for collecting and validating
     user input.
   </IxTypography>
 
-  <div
-    :style="{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: FORM_MAX_WIDTH }"
-  >
+  <div class="form-container" :style="{ maxWidth: FORM_MAX_WIDTH }">
       <IxInput
         :label="LABEL_INSPECTOR_NAME"
         placeholder="Jane Doe"
@@ -98,9 +94,30 @@ function handleCancel() {
         <IxRadio value="offline" label="Offline sampling" />
       </IxRadioGroup>
 
-      <div style="display: flex; gap: 1rem; margin-top: 0.5rem; justify-content: flex-end">
+      <div class="button-row">
         <IxButton variant="secondary" @click="handleCancel"> Cancel </IxButton>
         <IxButton variant="primary" @click="handleSave"> Save </IxButton>
       </div>
     </div>
 </template>
+
+<style scoped>
+.description {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  justify-content: flex-end;
+}
+</style>

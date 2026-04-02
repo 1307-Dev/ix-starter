@@ -13,14 +13,13 @@ import {
 } from '@siemens/ix-react';
 import {
   FORM_MAX_WIDTH,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
   INSPECTION_TYPES,
   PAGE_FORMS,
 } from '../shared';
+import './Forms.css';
 
 function Forms() {
   const [inspectorName, setInspectorName] = useState('');
@@ -52,14 +51,7 @@ function Forms() {
   return (
     <>
       <IxContentHeader headerTitle={PAGE_FORMS} />
-      <IxTypography
-        format="body"
-        style={{
-          display: 'block',
-          marginTop: SECTION_MARGIN_TOP,
-          marginBottom: SECTION_MARGIN_BOTTOM,
-        }}
-      >
+      <IxTypography format="body" className="description">
         Siemens Industrial Experience provides consistent form elements for collecting and
         validating user input.
       </IxTypography>
@@ -100,14 +92,7 @@ function Forms() {
           <IxRadio value="offline" label="Offline sampling" />
         </IxRadioGroup>
 
-        <div
-          style={{
-            display: 'flex',
-            columnGap: '1rem',
-            marginTop: '0.5rem',
-            justifyContent: 'flex-end',
-          }}
-        >
+        <div className="button-row">
           <IxButton variant="secondary" onClick={handleCancel}>
             {'Cancel'}
           </IxButton>
