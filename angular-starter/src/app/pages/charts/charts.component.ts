@@ -38,7 +38,7 @@ import {
         This lets you use different chart types in the Siemens Industrial Experience design system.
       </ix-typography>
 
-      <ix-typography format="h2" class="chart-title">{{ chartSectionTitle }}</ix-typography>
+      <ix-typography format="label-lg" bold class="chart-title">{{ chartSectionTitle }}</ix-typography>
 
       <div
         #chartContainer

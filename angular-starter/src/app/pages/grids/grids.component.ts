@@ -42,8 +42,8 @@ import {
     `
       .description {
         display: block;
-        margin-top: 0.5rem;
-        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
       }
       .description a {
         color: inherit;

@@ -7,8 +7,6 @@ import {
   GRID_COL_DEFS,
   URL_AG_GRID,
   PAGE_GRIDS,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
   GRID_MAX_WIDTH,
 } from '../shared';
 
@@ -27,8 +25,8 @@ function Grids() {
         format="body"
         style={{
           display: 'block',
-          marginTop: SECTION_MARGIN_TOP,
-          marginBottom: SECTION_MARGIN_BOTTOM,
+          marginTop: '1.5rem',
+          marginBottom: '1.5rem',
         }}
       >
         Siemens Industrial Experience integrates the data grid library{' '}

@@ -9,7 +9,7 @@ export const PAGE_FORMS = 'Forms';
 export const PAGE_CHARTS = 'Charts';
 export const PAGE_GRIDS = 'Grids';
 
-export const CHART_SECTION_TITLE = 'Motor Vibration Analysis';
+export const CHART_SECTION_TITLE = 'Motor vibration analysis';
 export const CHART_LABEL = 'Pump A-102';
 export const CHART_DESCRIPTION =
   'Siemens Industrial Experience provides an ECharts theme. This lets you use different chart types in the Siemens Industrial Experience design system.';

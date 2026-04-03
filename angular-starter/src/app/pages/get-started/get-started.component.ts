@@ -9,14 +9,20 @@ import { URL_IX_DOCS } from '../../../shared';
   template: `
     <div>
       <ix-content-header
-        headerTitle="Get Started with Siemens Industrial Experience"
+        headerTitle="Get started with Siemens Industrial Experience"
       ></ix-content-header>
       <ix-typography
         format="body"
-        style="display: block; margin-top: 0.5rem; margin-bottom: 1.5rem"
+        style="display: block; margin-top: 1.5rem; margin-bottom: 1.5rem"
       >
-        The starter app includes an application shell and three example pages with commonly used
-        components.
+        Explore the Siemens Industrial Experience design system with our interactive starter app.
+        <br />
+        Build faster with ready-to-use components and documentation.
+      </ix-typography>
+
+      <ix-typography format="body" style="display: block; margin-bottom: 1.5rem">
+        The starter app includes an application shell and three example pages featuring our most
+        popular components:
       </ix-typography>
 
       <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem">
@@ -25,8 +31,11 @@ import { URL_IX_DOCS } from '../../../shared';
         <ix-link-button url="/grids">Grids</ix-link-button>
       </div>
 
-      <ix-typography format="body" style="display: block">
-        Browse the full component library at
+      <ix-typography
+        format="body"
+        style="display: block; margin-top: 1.5rem; margin-bottom: 1.5rem"
+      >
+        Browse the full component library in our documentation:
         <a
           [href]="URL_IX_DOCS"
           target="_blank"

@@ -104,8 +104,8 @@ function handleCancel() {
 <style scoped>
 .description {
   display: block;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-container {

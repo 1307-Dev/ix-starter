@@ -14,8 +14,6 @@ import {
 } from '@siemens/ix-angular/standalone';
 import {
   FORM_MAX_WIDTH,
-  SECTION_MARGIN_TOP,
-  SECTION_MARGIN_BOTTOM,
   LABEL_INSPECTOR_NAME,
   LABEL_INSPECTION_TYPE,
   LABEL_INSPECTION_DATE,
@@ -97,8 +95,8 @@ import {
       }
       .description {
         display: block;
-        margin-top: 0.5rem;
-        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
       }
       .form-container {
         display: flex;

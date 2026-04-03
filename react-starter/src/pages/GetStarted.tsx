@@ -1,16 +1,22 @@
 import { IxTypography, IxLinkButton, IxContentHeader } from '@siemens/ix-react';
-import { URL_IX_DOCS, SECTION_MARGIN_TOP } from '../shared';
+import { URL_IX_DOCS } from '../shared';
 
 function GetStarted() {
   return (
     <>
-      <IxContentHeader headerTitle="Get Started with Siemens Industrial Experience" />
+      <IxContentHeader headerTitle="Get started with Siemens Industrial Experience" />
       <IxTypography
         format="body"
-        style={{ display: 'block', marginTop: SECTION_MARGIN_TOP, marginBottom: '1.5rem' }}
+        style={{ display: 'block', marginTop: '1.5rem', marginBottom: '1.5rem' }}
       >
-        The starter app includes an application shell and three example pages with commonly used
-        components.
+        Explore the Siemens Industrial Experience design system with our interactive starter app.
+        <br />
+        Build faster with ready-to-use components and documentation.
+      </IxTypography>
+
+      <IxTypography format="body" style={{ display: 'block', marginBottom: '1.5rem' }}>
+        The starter app includes an application shell and three example pages featuring our most
+        popular components:
       </IxTypography>
 
       <div
@@ -26,8 +32,11 @@ function GetStarted() {
         <IxLinkButton url="/grids">Grids</IxLinkButton>
       </div>
 
-      <IxTypography format="body" style={{ display: 'block' }}>
-        Browse the full component library at{' '}
+      <IxTypography
+        format="body"
+        style={{ display: 'block', marginTop: '1.5rem', marginBottom: '1.5rem' }}
+      >
+        Browse the full component library in our documentation:{' '}
         <a
           href={URL_IX_DOCS}
           target="_blank"

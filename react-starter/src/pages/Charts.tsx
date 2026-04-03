@@ -84,7 +84,7 @@ function Charts() {
         system.
       </IxTypography>
 
-      <IxTypography format="h2" style={{ marginBottom: '1rem' }}>
+      <IxTypography format="label-lg"bold style={{ marginBottom: '1rem' }}>
         {CHART_SECTION_TITLE}
       </IxTypography>
 

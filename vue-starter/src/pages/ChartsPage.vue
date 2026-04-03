@@ -58,7 +58,7 @@ onUnmounted(() => {
     system.
   </IxTypography>
 
-  <IxTypography format="h2" class="chart-title">
+  <IxTypography format="label-lg" bold class="chart-title">
     {{ CHART_SECTION_TITLE }}
   </IxTypography>
 
