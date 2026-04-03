@@ -1,0 +1,90 @@
+# GitLab Pages deployment for ix-starter
+# Serves three apps at:  /<project-path>/react/  |  /angular/  |  /vue/
+# Root redirects to /react/
+#
+# NOTE: If your runners require specific tags, add to each job:
+#   tags: [your-runner-tag]
+#
+# NOTE: If node:22-alpine is not available on your registry, replace with
+#   your internal equivalent, e.g. registry.code.siemens.com/node:22-alpine
+
+image: node:22-alpine
+
+stages:
+  - build
+  - deploy
+
+# ── Shared pnpm setup ────────────────────────────────────────────────────────
+.install-pnpm: &install-pnpm
+  before_script:
+    - npm install -g pnpm@9.15.0 --quiet
+
+# ── Build jobs (run in parallel) ─────────────────────────────────────────────
+
+build-react:
+  stage: build
+  <<: *install-pnpm
+  script:
+    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - cd react-starter
+    - pnpm install --frozen-lockfile
+    - BASE_PATH="${PAGES_BASE}/react/" pnpm build
+  artifacts:
+    paths:
+      - react-starter/dist/
+
+build-vue:
+  stage: build
+  <<: *install-pnpm
+  script:
+    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - cd vue-starter
+    - pnpm install --frozen-lockfile
+    - BASE_PATH="${PAGES_BASE}/vue/" pnpm build
+  artifacts:
+    paths:
+      - vue-starter/dist/
+
+build-angular:
+  stage: build
+  <<: *install-pnpm
+  script:
+    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - cd angular-starter
+    - pnpm install --frozen-lockfile
+    - pnpm build -- --base-href "${PAGES_BASE}/angular/"
+  artifacts:
+    paths:
+      - angular-starter/dist/
+
+# ── Deploy to GitLab Pages ────────────────────────────────────────────────────
+
+pages:
+  stage: deploy
+  dependencies:
+    - build-react
+    - build-vue
+    - build-angular
+  script:
+    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - mkdir -p public/react public/vue public/angular
+
+    # Copy each app's build output into its subpath
+    - cp -r react-starter/dist/* public/react/
+    - cp -r vue-starter/dist/* public/vue/
+    - cp -r angular-starter/dist/browser/* public/angular/
+
+    # SPA fallback: GitLab Pages serves 404.html for unknown routes,
+    # which lets the client-side router take over
+    - cp public/react/index.html public/react/404.html
+    - cp public/vue/index.html public/vue/404.html
+    - cp public/angular/index.html public/angular/404.html
+
+    # Root redirect → React app
+    - printf '<html><head><meta http-equiv="refresh" content="0;url=%s/react/"></head></html>\n' "$PAGES_BASE" > public/index.html
+
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

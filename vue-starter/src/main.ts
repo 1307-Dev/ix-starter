@@ -29,7 +29,7 @@ registerTheme(echarts);
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: () => import('./pages/GetStarted.vue') },
     { path: '/forms', component: () => import('./pages/FormsPage.vue') },
