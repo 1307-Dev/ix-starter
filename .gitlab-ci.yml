@@ -5,8 +5,8 @@
 # NOTE: If your runners require specific tags, add to each job:
 #   tags: [your-runner-tag]
 #
-# NOTE: If node:22-alpine is not available on your registry, replace with
-#   your internal equivalent, e.g. registry.code.siemens.com/node:22-alpine
+# NOTE: If node:22-alpine is not available on your runner, replace the image with
+#   your internal registry equivalent
 
 image: node:22-alpine
 
@@ -14,16 +14,17 @@ stages:
   - build
   - deploy
 
-# ── Shared pnpm setup ────────────────────────────────────────────────────────
-.install-pnpm: &install-pnpm
+# ── Shared setup ─────────────────────────────────────────────────────────────
+.setup: &setup
   before_script:
-    - npm install -g pnpm@9.15.0 --quiet
+    - npm config set registry https://captain.rtf.siemens.net/artifactory/api/npm/npm-remote/
+    - npm install -g pnpm@9.15.0
 
 # ── Build jobs (run in parallel) ─────────────────────────────────────────────
 
 build-react:
   stage: build
-  <<: *install-pnpm
+  <<: *setup
   script:
     - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
     - cd react-starter
@@ -35,7 +36,7 @@ build-react:
 
 build-vue:
   stage: build
-  <<: *install-pnpm
+  <<: *setup
   script:
     - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
     - cd vue-starter
@@ -47,7 +48,7 @@ build-vue:
 
 build-angular:
   stage: build
-  <<: *install-pnpm
+  <<: *setup
   script:
     - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
     - cd angular-starter
