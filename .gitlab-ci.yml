@@ -1,6 +1,7 @@
 # GitLab Pages deployment for ix-starter
-# Serves three apps at:  /<project-path>/react/  |  /angular/  |  /vue/
+# Serves three apps at:  /react/  |  /angular/  |  /vue/
 # Root redirects to /react/
+# Site root: https://ix-starter-04d0a9.code.siemens.io/
 #
 # NOTE: If your runners require specific tags, add to each job:
 #   tags: [your-runner-tag]
@@ -26,7 +27,7 @@ build-react:
   stage: build
   <<: *setup
   script:
-    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - export PAGES_BASE=""
     - cd react-starter
     - pnpm install --frozen-lockfile
     - BASE_PATH="${PAGES_BASE}/react/" pnpm build
@@ -38,7 +39,7 @@ build-vue:
   stage: build
   <<: *setup
   script:
-    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - export PAGES_BASE=""
     - cd vue-starter
     - pnpm install --frozen-lockfile
     - BASE_PATH="${PAGES_BASE}/vue/" pnpm build
@@ -50,7 +51,7 @@ build-angular:
   stage: build
   <<: *setup
   script:
-    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - export PAGES_BASE=""
     - cd angular-starter
     - pnpm install --frozen-lockfile
     - pnpm exec ng build --base-href "${PAGES_BASE}/angular/"
@@ -67,7 +68,7 @@ pages:
     - build-vue
     - build-angular
   script:
-    - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
+    - export PAGES_BASE=""
     - mkdir -p public/react public/vue public/angular
 
     # Copy each app's build output into its subpath
