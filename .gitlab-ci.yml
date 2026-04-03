@@ -53,7 +53,7 @@ build-angular:
     - export PAGES_BASE="/${CI_PROJECT_PATH#*/}"
     - cd angular-starter
     - pnpm install --frozen-lockfile
-    - pnpm build -- --base-href "${PAGES_BASE}/angular/"
+    - pnpm exec ng build --base-href "${PAGES_BASE}/angular/"
   artifacts:
     paths:
       - angular-starter/dist/
