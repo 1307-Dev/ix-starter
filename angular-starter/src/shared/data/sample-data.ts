@@ -53,12 +53,21 @@ export const GRID_COL_DEFS: { field: keyof GridRowData; headerName: string; flex
 
 export function buildChartOptions() {
   return {
-    tooltip: { trigger: 'item' as const },
-    grid: { left: 60, right: 30, top: 30, bottom: 60 },
+    tooltip: {
+      trigger: 'axis' as const,
+      axisPointer: { type: 'cross' as const },
+    },
+    legend: {
+      show: true,
+      bottom: '0',
+      left: 'center',
+    },
+    grid: { left: 60, right: 30, top: 30, bottom: 90 },
     xAxis: CHART_X_AXIS,
     yAxis: CHART_Y_AXIS,
     series: [
       {
+        name: 'Pump A-102',
         type: 'line' as const,
         data: CHART_SCATTER_DATA,
         symbol: 'circle',

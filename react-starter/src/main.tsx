@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
-import { GridComponent, TooltipComponent, TitleComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent, TitleComponent, LegendComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { registerTheme } from '@siemens/ix-echarts';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
@@ -19,7 +19,7 @@ import { defineCustomElements as defineIxBrandTheme } from '@siemens/ix-brand-th
 
 initializeIcons();
 defineIxBrandTheme();
-echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, CanvasRenderer]);
+echarts.use([LineChart, GridComponent, TooltipComponent, TitleComponent, LegendComponent, CanvasRenderer]);
 registerTheme(echarts);
 ModuleRegistry.registerModules([AllCommunityModule]);
 initializeTheme('brand', 'dark');

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { IxIcon, IxTypography, IxContentHeader } from '@siemens/ix-react';
+import { IxTypography, IxContentHeader } from '@siemens/ix-react';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -9,8 +9,6 @@ import {
   CHART_MAX_WIDTH,
   CHART_HEIGHT,
   CHART_SECTION_TITLE,
-  CHART_LABEL,
-  ICON_DRAG_AND_DROP,
   PAGE_CHARTS,
 } from '../shared';
 
@@ -93,19 +91,7 @@ function Charts() {
         style={{ width: '100%', maxWidth: CHART_MAX_WIDTH, height: CHART_HEIGHT }}
       />
 
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '0.5rem',
-          marginTop: '1rem',
-          maxWidth: CHART_MAX_WIDTH,
-        }}
-      >
-        <IxIcon name={ICON_DRAG_AND_DROP} size="16" />
-        <IxTypography format="body">{CHART_LABEL}</IxTypography>
-      </div>
+
     </>
   );
 }
