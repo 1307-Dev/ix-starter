@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
-import { IxContentHeader, IxTypography, IxIcon } from '@siemens/ix-vue';
+import { IxContentHeader, IxTypography } from '@siemens/ix-vue';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -8,8 +8,6 @@ import {
   buildChartOptions,
   URL_ECHARTS,
   CHART_SECTION_TITLE,
-  CHART_LABEL,
-  ICON_DRAG_AND_DROP,
   CHART_MAX_WIDTH,
   CHART_HEIGHT,
   PAGE_CHARTS,
@@ -67,21 +65,6 @@ onUnmounted(() => {
       :style="{ width: '100%', maxWidth: CHART_MAX_WIDTH, height: CHART_HEIGHT }"
     />
 
-    <div
-      :style="{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.5rem',
-        marginTop: '1rem',
-        maxWidth: CHART_MAX_WIDTH,
-      }"
-    >
-      <IxIcon :name="ICON_DRAG_AND_DROP" size="16" />
-      <IxTypography format="body">
-        {{ CHART_LABEL }}
-      </IxTypography>
-    </div>
 </template>
 
 <style scoped>

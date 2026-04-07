@@ -6,7 +6,7 @@ import {
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { IxContentHeader, IxTypography, IxIcon } from '@siemens/ix-angular/standalone';
+import { IxContentHeader, IxTypography } from '@siemens/ix-angular/standalone';
 import { themeSwitcher } from '@siemens/ix';
 import { convertThemeName } from '@siemens/ix-echarts';
 import * as echarts from 'echarts/core';
@@ -14,8 +14,6 @@ import {
   buildChartOptions,
   URL_ECHARTS,
   CHART_SECTION_TITLE,
-  CHART_LABEL,
-  ICON_DRAG_AND_DROP,
   CHART_MAX_WIDTH,
   CHART_HEIGHT,
   CHART_INIT_DELAY_MS,
@@ -25,7 +23,7 @@ import {
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [IxContentHeader, IxTypography, IxIcon],
+  imports: [IxContentHeader, IxTypography],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="charts-page">
@@ -47,10 +45,6 @@ import {
         [style.height]="CHART_HEIGHT"
       ></div>
 
-      <div class="chart-label" [style.max-width]="CHART_MAX_WIDTH">
-        <ix-icon name="drag-and-drop" size="16"></ix-icon>
-        <ix-typography format="body">{{ chartLabel }}</ix-typography>
-      </div>
     </div>
   `,
   styles: [
@@ -67,13 +61,6 @@ import {
       .chart-title {
         margin-bottom: 1rem;
       }
-      .chart-label {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-      }
     `,
   ],
 })
@@ -84,8 +71,6 @@ export class ChartsComponent implements AfterViewInit, OnDestroy {
   protected readonly PAGE_CHARTS = PAGE_CHARTS;
   protected readonly urlEcharts = URL_ECHARTS;
   protected readonly chartSectionTitle = CHART_SECTION_TITLE;
-  protected readonly chartLabel = CHART_LABEL;
-  protected readonly iconDragAndDrop = ICON_DRAG_AND_DROP;
   protected readonly CHART_MAX_WIDTH = CHART_MAX_WIDTH;
   protected readonly CHART_HEIGHT = CHART_HEIGHT;
   private readonly chartInitDelayMs = CHART_INIT_DELAY_MS;
