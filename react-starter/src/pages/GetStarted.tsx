@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { IxTypography, IxLinkButton, IxContentHeader } from '@siemens/ix-react';
 import { URL_IX_DOCS } from '../shared';
 
 function GetStarted() {
+  const navigate = useNavigate();
+
   return (
     <>
       <IxContentHeader headerTitle="Get started with Siemens Industrial Experience" />
@@ -27,9 +30,9 @@ function GetStarted() {
           marginBottom: '2rem',
         }}
       >
-        <IxLinkButton url="/forms">Forms</IxLinkButton>
-        <IxLinkButton url="/charts">Charts</IxLinkButton>
-        <IxLinkButton url="/grids">Grids</IxLinkButton>
+        <IxLinkButton onClick={() => navigate('/forms')}>Forms</IxLinkButton>
+        <IxLinkButton onClick={() => navigate('/charts')}>Charts</IxLinkButton>
+        <IxLinkButton onClick={() => navigate('/grids')}>Grids</IxLinkButton>
       </div>
 
       <IxTypography

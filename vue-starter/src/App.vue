@@ -24,7 +24,7 @@ const route = useRoute();
         :key="item.path"
         :icon="item.icon"
         :active="route.path === item.path"
-        @click="router.push(item.path)"
+        @click.prevent="router.push(item.path)"
       >
         {{ item.label }}
       </IxMenuItem>

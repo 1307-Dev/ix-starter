@@ -85,6 +85,21 @@ pages:
     # Root redirect → React app
     - printf '<html><head><meta http-equiv="refresh" content="0;url=%s/react/"></head></html>\n' "$PAGES_BASE" > public/index.html
 
+    # Root 404.html — GitLab Pages only reliably uses root-level 404.html.
+    # Detects which SPA was targeted, stores path in sessionStorage, redirects
+    # to the app root. Each app's index.html restores the path before the
+    # router initialises (see the inline script in each index.html).
+    - |
+      cat > public/404.html <<'HTMLEOF'
+      <!DOCTYPE html><html><head><script>
+        var p=location.pathname,b='/react/';
+        if(p.startsWith('/angular/'))b='/angular/';
+        else if(p.startsWith('/vue/'))b='/vue/';
+        sessionStorage.setItem('ix-redirect',p+location.search+location.hash);
+        location.replace(b);
+      </script></head></html>
+      HTMLEOF
+
   artifacts:
     paths:
       - public

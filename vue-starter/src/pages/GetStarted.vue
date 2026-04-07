@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import { IxContentHeader, IxTypography, IxLinkButton } from '@siemens/ix-vue';
 import { URL_IX_DOCS } from '../shared';
+
+const router = useRouter();
 </script>
 
 <template>
@@ -17,9 +20,9 @@ import { URL_IX_DOCS } from '../shared';
   </IxTypography>
 
   <div :style="{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }">
-    <IxLinkButton url="/forms">Forms</IxLinkButton>
-    <IxLinkButton url="/charts">Charts</IxLinkButton>
-    <IxLinkButton url="/grids">Grids</IxLinkButton>
+    <IxLinkButton @click.prevent="router.push('/forms')">Forms</IxLinkButton>
+    <IxLinkButton @click.prevent="router.push('/charts')">Charts</IxLinkButton>
+    <IxLinkButton @click.prevent="router.push('/grids')">Grids</IxLinkButton>
   </div>
 
   <IxTypography format="body" :style="{ display: 'block', marginTop: '1.5rem', marginBottom: '1.5rem' }">

@@ -2,6 +2,12 @@
 <html lang="en" data-ix-theme="classic" data-ix-color-schema="dark">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var r = sessionStorage.getItem('ix-redirect');
+        if (r) { sessionStorage.removeItem('ix-redirect'); history.replaceState(null, null, r); }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iX Vue Starter</title>

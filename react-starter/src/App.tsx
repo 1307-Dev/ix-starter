@@ -38,7 +38,7 @@ function App() {
             key={item.path}
             icon={item.icon}
             active={isActive(item.path)}
-            onClick={() => navigate(item.path)}
+            onClick={(e) => { e.preventDefault(); navigate(item.path); }}
           >
             {item.label}
           </IxMenuItem>
